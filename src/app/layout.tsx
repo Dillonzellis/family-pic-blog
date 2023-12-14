@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Providers from "@/components/Providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={cn("relative font-sans antialiased", inter.className)}>
         <main className="relative flex flex-col min-h-screen">
-          <div className="flex-grow flex-1">{children}</div>
+          <Providers>
+            <div className="flex-grow flex-1">{children}</div>
+          </Providers>
         </main>
       </body>
     </html>
