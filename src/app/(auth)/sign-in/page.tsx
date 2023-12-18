@@ -52,7 +52,7 @@ const Page = () => {
       }
 
       if (isSeller) {
-        router.push("/sell");
+        router.push("/dashboard");
         return;
       }
 

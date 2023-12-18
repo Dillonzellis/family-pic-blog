@@ -8,7 +8,10 @@ export default function Home() {
         Welcome to <span className="text-blue-600">Walking After Midnight</span>
       </h1>
       <p className="text-gray-700 text-2xl">Enjoy your stay!</p>
-      <Link href="/" className={buttonVariants({ className: "self-start" })}>
+      <Link
+        href="/sign-in"
+        className={buttonVariants({ className: "self-start" })}
+      >
         Sign In
       </Link>
     </div>
