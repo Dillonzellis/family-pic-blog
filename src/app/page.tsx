@@ -1,5 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 export default function Home() {
   return (
@@ -8,12 +7,7 @@ export default function Home() {
         Welcome to <span className="text-blue-600">Walking After Midnight</span>
       </h1>
       <p className="text-gray-700 text-2xl">Enjoy your stay!</p>
-      <Link
-        href="/sign-in"
-        className={buttonVariants({ className: "self-start" })}
-      >
-        Sign In
-      </Link>
+      <LoginBtnWrapper />
     </div>
   );
 }
