@@ -13,10 +13,10 @@ export const LoginBtnWrapper = async () => {
     <>
       {user ? (
         <Link
-          href="/home"
+          href="/profile"
           className={buttonVariants({ className: "self-start" })}
         >
-          Home Page
+          Profile Page
         </Link>
       ) : (
         <Link
