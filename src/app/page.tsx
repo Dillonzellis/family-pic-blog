@@ -1,8 +1,11 @@
 import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 // TODO: customize admin panel
-// TODO: stop new signups/protect dashboard route?
-// TODO: after sign in refresh page
+// TODO: stop new signups
+
+// TODO: personal profile with user uploads
+// TODO: button to all uploads page
+// TODO: sort uploads by user
 
 export default function Home() {
   return (
