@@ -13,9 +13,6 @@ const ProfilePage = async () => {
       <div className="pt-20">
         <div className="pb-6">Profile Page</div>
         <div className="text-xl pb-12">Welcome {user?.email}!</div>
-        {/* TODO: personal profile with user uploads */}
-        {/* TODO: button to all uploads page */}
-        {/* TODO: sort uploads by user */}
         <Link href="/dashboard" className={buttonVariants()}>
           Upload Media
         </Link>

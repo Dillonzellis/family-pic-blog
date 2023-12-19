@@ -7,8 +7,6 @@ export const LoginBtnWrapper = async () => {
   const nextCookies = cookies();
   const { user } = await getServerSideUser(nextCookies);
 
-  //TODO: Make this into parent component and conditional dashboard for uploads or visit profile page or home page
-
   return (
     <>
       {user ? (
