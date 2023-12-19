@@ -1,5 +1,9 @@
 import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
+// TODO: customize admin panel
+// TODO: stop new signups/protect dashboard route?
+// TODO: after sign in refresh page
+
 export default function Home() {
   return (
     <div className="mx-auto flex flex-col gap-y-6 justify-center max-w-3xl items-center- min-h-screen px-8">
