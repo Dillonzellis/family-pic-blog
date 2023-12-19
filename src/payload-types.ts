@@ -9,6 +9,8 @@
 export interface Config {
   collections: {
     users: User;
+    upload_entries: UploadEntry;
+    albums: Album;
     media: Media;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -30,6 +32,32 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
+}
+export interface UploadEntry {
+  id: string;
+  user?: (string | null) | User;
+  title?: string | null;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+export interface Album {
+  id: string;
+  user?: (string | null) | User;
+  title?: string | null;
+  description?: string | null;
+  images: {
+    image: string | Media;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Media {
   id: string;
