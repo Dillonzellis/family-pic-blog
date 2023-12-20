@@ -12,7 +12,7 @@ const ProfilePage = async () => {
     <MaxWidthWrapper>
       <div className="pt-20">
         <div className="pb-6">Profile Page</div>
-        <div className="text-xl pb-12">Welcome {user?.email}!</div>
+        <div className="text-xl pb-12">Welcome {user?.name}!</div>
         <Link href="/dashboard" className={buttonVariants()}>
           Upload Media
         </Link>
