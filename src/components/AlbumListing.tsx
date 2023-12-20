@@ -25,6 +25,10 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
 
   if (!album || !isVisible) return <AlbumPlaceholder />;
 
+  // const validUrls = album.thumbnail
+  //   .map(({ thumbnail }) => (typeof image === "string" ? image : image.url))
+  //   .filter(Boolean) as string[];
+
   if (isVisible && album) {
     return (
       <Link
