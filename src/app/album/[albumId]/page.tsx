@@ -79,8 +79,11 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
             <div className="mt-8">
               {album.images &&
                 album.images.map((imageObj, index) => (
-                  <Link href={imageObj.image.url}>
-                    <div key={imageObj.image.id || index} className="mb-4">
+                  <Link
+                    href={imageObj.image.url}
+                    key={imageObj.image.id || index}
+                  >
+                    <div className="mb-4">
                       <Image
                         src={imageObj.image.url}
                         alt={imageObj.image.title || `Album Image ${index + 1}`}
