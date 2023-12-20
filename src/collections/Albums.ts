@@ -1,15 +1,29 @@
 import { Access, CollectionConfig } from "payload/types";
+import {
+  AfterChangeHook,
+  BeforeChangeHook,
+} from "payload/dist/collections/config/types";
+import { Album } from "../payload-types";
+
+const addUser: BeforeChangeHook<Album> = async ({ req, data }) => {
+  const user = req.user;
+
+  return { ...data, user: user.id };
+};
 
 export const Albums: CollectionConfig = {
   slug: "albums",
   admin: {
-    useAsTitle: "albums",
+    useAsTitle: "title",
   },
   access: {
     read: () => true,
     create: () => true,
     update: () => true,
     delete: () => true,
+  },
+  hooks: {
+    beforeChange: [addUser],
   },
   fields: [
     {
@@ -25,6 +39,7 @@ export const Albums: CollectionConfig = {
     {
       name: "title",
       label: "Title",
+      required: true,
       type: "text",
     },
     {
@@ -35,7 +50,7 @@ export const Albums: CollectionConfig = {
     {
       name: "images",
       type: "array",
-      label: "Product images",
+      label: "Album Images",
       minRows: 1,
       maxRows: 4,
       required: true,
@@ -47,10 +62,18 @@ export const Albums: CollectionConfig = {
         {
           name: "image",
           type: "upload",
-          relationTo: "media",
+          relationTo: "upload_entries",
           required: true,
         },
       ],
     },
+    // {
+    //   name: "upload_entries",
+    //   label: "Add images to Album",
+    //   type: "relationship",
+    //   required: true,
+    //   relationTo: "upload_entries",
+    //   hasMany: true,
+    // },
   ],
 };

@@ -1,15 +1,22 @@
 import { Access, CollectionConfig } from "payload/types";
+import { BeforeChangeHook } from "payload/dist/collections/config/types";
+import { User } from "../payload-types";
+
+const addUser: BeforeChangeHook = ({ req, data }) => {
+  const user = req.user as User | null;
+  return { ...data, user: user?.id };
+};
 
 export const UploadEntries: CollectionConfig = {
   slug: "upload_entries",
-  admin: {
-    useAsTitle: "uploads",
-  },
   access: {
     read: () => true,
     create: () => true,
     update: () => true,
     delete: () => true,
+  },
+  hooks: {
+    beforeChange: [addUser],
   },
   fields: [
     {
