@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface AlbumListingProps {
   album: Album | null;
@@ -13,6 +14,8 @@ interface AlbumListingProps {
 
 const AlbumListing = ({ album, index }: AlbumListingProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  console.log(album?.thumbnail.url);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,9 +36,13 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
         href={`/album/${album.id}`}
       >
         <div className="flex flex-col w-full">
+          <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+            <Image src={album.thumbnail.url} alt="" fill />
+          </div>
           <h3 className="mt-4 font-medium text-sm text-gray-700">
             {album.title}
           </h3>
+          <div>{album.description}</div>
         </div>
       </Link>
     );
