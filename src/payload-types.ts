@@ -20,6 +20,7 @@ export interface Config {
 export interface User {
   id: string;
   role: 'admin' | 'user';
+  name: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -50,10 +51,10 @@ export interface UploadEntry {
 export interface Album {
   id: string;
   user?: (string | null) | User;
-  title?: string | null;
+  title: string;
   description?: string | null;
   images: {
-    image: string | Media;
+    image: string | UploadEntry;
     id?: string | null;
   }[];
   updatedAt: string;
