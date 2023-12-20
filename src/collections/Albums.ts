@@ -15,6 +15,7 @@ export const Albums: CollectionConfig = {
   slug: "albums",
   admin: {
     useAsTitle: "title",
+    defaultColumns: ["title", "description", "user"],
   },
   access: {
     read: () => true,
@@ -45,7 +46,14 @@ export const Albums: CollectionConfig = {
     {
       name: "description",
       type: "textarea",
-      label: "Caption",
+      label: "Description",
+    },
+    {
+      name: "thumbnail",
+      label: "Album Thumbnail",
+      type: "upload",
+      required: true,
+      relationTo: "media",
     },
     {
       name: "images",
@@ -67,13 +75,5 @@ export const Albums: CollectionConfig = {
         },
       ],
     },
-    // {
-    //   name: "upload_entries",
-    //   label: "Add images to Album",
-    //   type: "relationship",
-    //   required: true,
-    //   relationTo: "upload_entries",
-    //   hasMany: true,
-    // },
   ],
 };
