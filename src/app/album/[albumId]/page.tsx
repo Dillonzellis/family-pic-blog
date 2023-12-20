@@ -1,3 +1,4 @@
+import { UploadEntry } from "@/payload-types";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { notFound } from "next/navigation";
 import { getPayloadClient } from "@/get-payload";
@@ -38,6 +39,26 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
 
   if (!album) return notFound();
 
+  const imageUrls = album.images
+    .map(({ image }) => (typeof image === "string" ? image : image.url))
+    .filter(Boolean) as string[];
+
+  let thumbnailUrl: string | undefined;
+
+  if (typeof album.thumbnail !== "string") {
+    if (album.thumbnail.url) {
+      thumbnailUrl = album.thumbnail.url;
+    }
+  }
+
+  const userName =
+    typeof album.user === "object" && album.user ? album.user.name : "Unknown";
+
+  // Example of a type guard for UploadEntry type
+  function isUploadEntry(entry: string | UploadEntry): entry is UploadEntry {
+    return typeof entry !== "string";
+  }
+
   return (
     <MaxWidthWrapper className="bg-white">
       <div className="bg-white">
@@ -69,16 +90,16 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
               ))}
             </ol>
             <div className="w-20 h-20 relative">
-              <Image src={album.thumbnail.url} alt="" fill />
+              {thumbnailUrl && <Image src={thumbnailUrl} alt="" fill />}
             </div>
             <div className="mt-4">{album.title}</div>
             <div className="mt-4">{album.description}</div>
-            <div className="mt-4">Album by {album.user.name}</div>
+            <div className="mt-4">Album by {userName}</div>
 
             {/* Album Images Section */}
             <div className="mt-8">
-              {album.images &&
-                album.images.map((imageObj, index) => (
+              {album.images?.map((imageObj, index) => {
+                return (
                   <Link
                     href={imageObj.image.url}
                     key={imageObj.image.id || index}
@@ -89,7 +110,6 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
                         alt={imageObj.image.title || `Album Image ${index + 1}`}
                         width={imageObj.image.width}
                         height={imageObj.image.height}
-                        layout="responsive"
                       />
                       <p className="text-sm mt-2">{imageObj.image.title}</p>
                       <p className="text-sm mt-2">
@@ -97,7 +117,8 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
                       </p>
                     </div>
                   </Link>
-                ))}
+                );
+              })}
             </div>
           </div>
         </div>
