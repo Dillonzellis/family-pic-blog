@@ -12,6 +12,7 @@ const adminsAndUser: Access = ({ req: { user } }) => {
 
 export const Users: CollectionConfig = {
   slug: "users",
+
   auth: {
     verify: {
       generateEmailHTML: ({ token }) => {
@@ -27,7 +28,8 @@ export const Users: CollectionConfig = {
   },
   admin: {
     hidden: ({ user }) => user.role !== "admin",
-    defaultColumns: ["id"],
+    defaultColumns: ["name"],
+    useAsTitle: "Nametest",
   },
   fields: [
     {
@@ -40,6 +42,12 @@ export const Users: CollectionConfig = {
         { label: "Admin", value: "admin" },
         { label: "User", value: "user" },
       ],
+    },
+    {
+      name: "name",
+      label: "Name",
+      type: "text",
+      required: true,
     },
   ],
 };
