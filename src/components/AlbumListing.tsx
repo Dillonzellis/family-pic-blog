@@ -15,8 +15,6 @@ interface AlbumListingProps {
 const AlbumListing = ({ album, index }: AlbumListingProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  console.log(album?.thumbnail.url);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
