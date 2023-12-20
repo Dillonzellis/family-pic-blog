@@ -10,6 +10,8 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 // TODO: show all albums
 
+//TODO: update collections to hide other users albums and uploads from admin panel
+
 export default function Home() {
   return (
     <div className="mx-auto flex flex-col gap-y-6 justify-center max-w-3xl items-center- min-h-screen px-8">
