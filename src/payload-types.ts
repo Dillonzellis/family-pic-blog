@@ -19,8 +19,9 @@ export interface Config {
 }
 export interface User {
   id: string;
+  albums?: (string | Album)[] | null;
   role: 'admin' | 'user';
-  name: string;
+  name?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -33,20 +34,6 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
-}
-export interface UploadEntry {
-  id: string;
-  user?: (string | null) | User;
-  title?: string | null;
-  description?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
 }
 export interface Album {
   id: string;
@@ -64,6 +51,20 @@ export interface Album {
 export interface Media {
   id: string;
   user?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+export interface UploadEntry {
+  id: string;
+  user?: (string | null) | User;
+  title?: string | null;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;

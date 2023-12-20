@@ -33,6 +33,15 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
+      name: "albums",
+      admin: {
+        condition: () => false,
+      },
+      type: "relationship",
+      relationTo: "albums",
+      hasMany: true,
+    },
+    {
       name: "role",
       defaultValue: "user",
       required: true,
@@ -47,7 +56,6 @@ export const Users: CollectionConfig = {
       name: "name",
       label: "Name",
       type: "text",
-      required: true,
     },
   ],
 };
