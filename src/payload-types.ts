@@ -53,6 +53,7 @@ export interface Album {
   user?: (string | null) | User;
   title: string;
   description?: string | null;
+  thumbnail: string | Media;
   images: {
     image: string | UploadEntry;
     id?: string | null;
