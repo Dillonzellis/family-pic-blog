@@ -60,7 +60,6 @@ export const Albums: CollectionConfig = {
       type: "array",
       label: "Album Images",
       minRows: 1,
-      maxRows: 4,
       required: true,
       labels: {
         singular: "Image",
