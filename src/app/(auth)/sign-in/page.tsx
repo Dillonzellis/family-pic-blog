@@ -141,33 +141,8 @@ const Page = () => {
               <div
                 aria-hidden="true"
                 className="absolute inset-0 flex items-center"
-              >
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
-                  or
-                </span>
-              </div>
+              ></div>
             </div>
-
-            {isSeller ? (
-              <Button
-                onClick={continueAsBuyer}
-                variant="secondary"
-                disabled={isLoading}
-              >
-                Continue as customer
-              </Button>
-            ) : (
-              <Button
-                onClick={continueAsSeller}
-                variant="secondary"
-                disabled={isLoading}
-              >
-                Continue as seller
-              </Button>
-            )}
           </div>
         </div>
       </div>
