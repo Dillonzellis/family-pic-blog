@@ -3,10 +3,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 // TODO: customize admin panel
 // TODO: stop new signups
 
-// TODO: personal profile with user uploads
-// TODO: button to all uploads page
-// TODO: sort uploads by user
-
 export default function Home() {
   return (
     <div className="mx-auto flex flex-col gap-y-6 justify-center max-w-3xl items-center- min-h-screen px-8">
