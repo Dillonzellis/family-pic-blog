@@ -2,7 +2,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 // TODO: customize admin panel
 // TODO: stop new signups
-// TODO: add proper nav bar and mobile menu
 
 export default function Home() {
   return (
