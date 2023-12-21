@@ -3,7 +3,7 @@ import {
   AfterChangeHook,
   BeforeChangeHook,
 } from "payload/dist/collections/config/types";
-import { Album } from "../payload-types";
+import { Album, User } from "../payload-types";
 
 const addUser: BeforeChangeHook<Album> = async ({ req, data }) => {
   const user = req.user;
@@ -34,15 +34,20 @@ const syncUser: AfterChangeHook<Album> = async ({ req, doc }) => {
   }
 };
 
-const adminsAndUser: Access = ({ req: { user } }) => {
-  if (user.role === "admin") return true;
+const isAdminOrHasAccessToImages =
+  (): Access =>
+  async ({ req }) => {
+    const user = req.user as User | undefined;
 
-  return {
-    id: {
-      equals: user.id,
-    },
+    if (!user) return false;
+    if (user.role === "admin") return true;
+
+    return {
+      user: {
+        equals: req.user.id,
+      },
+    };
   };
-};
 
 export const Albums: CollectionConfig = {
   slug: "albums",
@@ -51,10 +56,17 @@ export const Albums: CollectionConfig = {
     defaultColumns: ["title", "description", "user"],
   },
   access: {
-    read: adminsAndUser,
-    create: () => true,
-    update: ({ req }) => req.user.role === "admin",
-    delete: ({ req }) => req.user.role === "admin",
+    read: async ({ req }) => {
+      const referer = req.headers.referer;
+
+      if (!req.user || !referer?.includes("dashboard")) {
+        return true;
+      }
+
+      return await isAdminOrHasAccessToImages()({ req });
+    },
+    delete: isAdminOrHasAccessToImages(),
+    update: isAdminOrHasAccessToImages(),
   },
   hooks: {
     beforeChange: [addUser],

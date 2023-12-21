@@ -12,6 +12,8 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 //TODO: make Album thumbnail
 //TODO: update collections to hide other users albums and uploads from admin panel
+//
+//TODO: hide upload entries from users
 
 export default function Home() {
   return (

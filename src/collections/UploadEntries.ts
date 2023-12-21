@@ -1,22 +1,50 @@
 import { Access, CollectionConfig } from "payload/types";
-import { BeforeChangeHook } from "payload/dist/collections/config/types";
-import { User } from "../payload-types";
+import {
+  BeforeChangeHook,
+  AfterChangeHook,
+} from "payload/dist/collections/config/types";
+import { UploadEntry, User } from "../payload-types";
 
 const addUser: BeforeChangeHook = ({ req, data }) => {
   const user = req.user as User | null;
   return { ...data, user: user?.id };
 };
 
+const isAdminOrHasAccessToImages =
+  (): Access =>
+  async ({ req }) => {
+    const user = req.user as User | undefined;
+
+    if (!user) return false;
+    if (user.role === "admin") return true;
+
+    return {
+      user: {
+        equals: req.user.id,
+      },
+    };
+  };
+
 export const UploadEntries: CollectionConfig = {
   slug: "upload_entries",
   access: {
-    read: () => true,
-    create: () => true,
-    update: () => true,
-    delete: () => true,
+    read: async ({ req }) => {
+      const referer = req.headers.referer;
+
+      if (!req.user || !referer?.includes("dashboard")) {
+        return true;
+      }
+
+      return await isAdminOrHasAccessToImages()({ req });
+    },
+    delete: isAdminOrHasAccessToImages(),
+    update: isAdminOrHasAccessToImages(),
   },
   hooks: {
     beforeChange: [addUser],
+  },
+  admin: {
+    hidden: ({ user }) => user.role !== "admin",
   },
   fields: [
     {
