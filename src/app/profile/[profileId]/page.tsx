@@ -21,27 +21,32 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
 
   const payload = await getPayloadClient();
 
-  const { docs } = await payload.find({
-    collection: "users",
+  const { docs: albums } = await payload.find({
+    collection: "albums",
     where: {
-      id: {
+      user: {
         equals: profileId,
       },
     },
   });
 
-  docs.forEach((doc) => {
-    console.log("User:", doc.name);
-    console.log("Albums:", doc.albums);
-    // If albums are objects, you can iterate over them and log their properties
-    doc.albums?.forEach((album) => {
-      console.log("Album details:", album.title);
-    });
+  // console.log(albums);
+
+  albums.forEach((album) => {
+    console.log(album.thumbnail.url);
   });
 
-  const albumTitles = docs.flatMap((doc) =>
-    doc.albums.map((album) => album.title)
-  );
+  const albumTitles = albums.map((album) => album.title);
+  const desc = albums.map((album) => album.description);
+
+  const createdAt = albums.map((album) => album.createdAt);
+  const thumbnail = albums.map((album) => album.thumbnail.url);
+
+  const allImagesFlattened = albums.flatMap((album) => album.images);
+
+  const imageTitles = allImagesFlattened.map((item) => item.image.title);
+
+  console.log(allImagesFlattened);
 
   return (
     <MaxWidthWrapper>
@@ -53,6 +58,12 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
           <div key={index} className="pb-2">
             {title}
           </div>
+        ))}
+        <div>{thumbnail}</div>
+        <div>{createdAt}</div>
+        <div>{desc}</div>
+        {imageTitles.map((imgTitle, i) => (
+          <div key={i}>Image Titles {imgTitle}</div>
         ))}
         <Link href="/dashboard" className={buttonVariants()}>
           Upload Media

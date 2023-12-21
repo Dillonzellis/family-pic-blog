@@ -6,7 +6,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 // TODO: personal profile with user uploads
 // TODO: button to all uploads page
 // TODO: sort uploads by user
-// TODO: add logout path
 
 export default function Home() {
   return (
