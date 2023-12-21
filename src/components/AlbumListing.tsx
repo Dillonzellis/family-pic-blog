@@ -29,6 +29,14 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
   //   .map(({ thumbnail }) => (typeof image === "string" ? image : image.url))
   //   .filter(Boolean) as string[];
 
+  let thumbnailUrl: string | undefined;
+
+  if (typeof album.thumbnail !== "string") {
+    if (album.thumbnail.url) {
+      thumbnailUrl = album.thumbnail.url;
+    }
+  }
+
   if (isVisible && album) {
     return (
       <Link
@@ -39,7 +47,7 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
       >
         <div className="flex flex-col w-full">
           <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-            <Image src={album.thumbnail.url} alt="" fill />
+            {thumbnailUrl && <Image src={thumbnailUrl} alt="" fill />}
           </div>
           <h3 className="mt-4 font-medium text-sm text-gray-700">
             {album.title}

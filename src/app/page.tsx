@@ -8,13 +8,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 // TODO: sort uploads by user
 // TODO: add logout path
 
-// TODO: show all albums
-
-//TODO: make Album thumbnail
-//TODO: update collections to hide other users albums and uploads from admin panel
-//
-//TODO: hide upload entries from users
-
 export default function Home() {
   return (
     <div className="mx-auto flex flex-col gap-y-6 justify-center max-w-3xl items-center- min-h-screen px-8">

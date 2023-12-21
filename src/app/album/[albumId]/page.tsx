@@ -39,10 +39,6 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
 
   if (!album) return notFound();
 
-  const imageUrls = album.images
-    .map(({ image }) => (typeof image === "string" ? image : image.url))
-    .filter(Boolean) as string[];
-
   let thumbnailUrl: string | undefined;
 
   if (typeof album.thumbnail !== "string") {
@@ -54,10 +50,19 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
   const userName =
     typeof album.user === "object" && album.user ? album.user.name : "Unknown";
 
-  // Example of a type guard for UploadEntry type
-  function isUploadEntry(entry: string | UploadEntry): entry is UploadEntry {
+  // function isUploadEntry(entry: string | UploadEntry): entry is UploadEntry {
+  //   return typeof entry !== "string";
+  // }
+
+  const isUploadEntry = (entry: string | UploadEntry): entry is UploadEntry => {
     return typeof entry !== "string";
-  }
+  };
+
+  // function isUploadEntry(
+  //   entry: string | number | UploadEntry
+  // ): entry is UploadEntry {
+  //   return typeof entry !== "string" && typeof entry !== "number";
+  // }
 
   return (
     <MaxWidthWrapper className="bg-white">
@@ -99,22 +104,41 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
             {/* Album Images Section */}
             <div className="mt-8">
               {album.images?.map((imageObj, index) => {
+                let imageUrl = isUploadEntry(imageObj.image)
+                  ? imageObj.image.url
+                  : imageObj.image;
+
+                if (typeof imageUrl !== "string") {
+                  return null;
+                }
+
+                let imageTitle = isUploadEntry(imageObj.image)
+                  ? imageObj.image.title
+                  : imageObj.image;
+
+                if (typeof imageTitle !== "string") {
+                  return null;
+                }
+
+                let imageDesc = isUploadEntry(imageObj.image)
+                  ? imageObj.image.description
+                  : imageObj.image;
+
+                if (typeof imageDesc !== "string") {
+                  return null;
+                }
+
                 return (
-                  <Link
-                    href={imageObj.image.url}
-                    key={imageObj.image.id || index}
-                  >
+                  <Link href={imageUrl} key={index}>
                     <div className="mb-4">
                       <Image
-                        src={imageObj.image.url}
-                        alt={imageObj.image.title || `Album Image ${index + 1}`}
-                        width={imageObj.image.width}
-                        height={imageObj.image.height}
+                        src={imageUrl}
+                        alt="Album Image"
+                        width={500}
+                        height={500}
                       />
-                      <p className="text-sm mt-2">{imageObj.image.title}</p>
-                      <p className="text-sm mt-2">
-                        {imageObj.image.description}
-                      </p>
+                      <p className="text-sm mt-2">{imageTitle}</p>
+                      <p className="text-sm mt-2">{imageDesc}</p>
                     </div>
                   </Link>
                 );
