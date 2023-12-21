@@ -32,7 +32,11 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
   // If no albums, you can return a message or handle it as needed
   // TODO: add guard clause for no albums
   if (albums.length === 0) {
-    return <div>No albums found</div>;
+    return (
+      <MaxWidthWrapper>
+        <div>No albums found</div>
+      </MaxWidthWrapper>
+    );
   }
 
   return (
