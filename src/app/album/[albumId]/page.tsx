@@ -1,9 +1,9 @@
-import { UploadEntry } from "@/payload-types";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { notFound } from "next/navigation";
 import { getPayloadClient } from "@/get-payload";
-import Link from "next/link";
+import { UploadEntry } from "@/payload-types";
 import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface AlbumPageProps {
   params: {
