@@ -18,8 +18,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="lg:grid lg:grid-cols-5 min-h-screen relative">
-      <div className="w-full lg:col-span-3 relative">
+    <div className="relative min-h-screen lg:grid lg:grid-cols-5">
+      <div className="relative w-full lg:col-span-3">
         <Image
           src="/midnight-landing.jpg"
           alt=""
@@ -27,12 +27,12 @@ export default function Home() {
           fill
         />
       </div>
-      <div className="bg-zinc-50 lg:col-span-2 flex flex-col justify-center lg:mx-auto max-w-prose mx-3 px-3 pb-3 pt-5 lg:px-12 absolute top-1/2 -translate-y-1/2">
-        <h1 className="text-7xl font-serif pb-1 text-zinc-900">
+      <div className="absolute top-1/2 mx-3 flex max-w-prose -translate-y-1/2 flex-col justify-center bg-zinc-50 px-3 pb-3 pt-5 lg:col-span-2 lg:mx-auto lg:px-12">
+        <h1 className="pb-1 font-serif text-7xl text-zinc-900">
           Walking After Midnight
         </h1>
         <div aria-hidden="true" className="border-t pb-4"></div>
-        <p className="text-zinc-700 font-serif text-2xl pb-8">
+        <p className="pb-8 font-serif text-2xl text-zinc-700">
           &quot;Family is the heart of life&apos;s journey; it&apos;s where we
           learn to love, laugh, and embrace the beauty of being perfectly
           imperfect together.&quot;
