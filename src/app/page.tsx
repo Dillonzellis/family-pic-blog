@@ -5,10 +5,9 @@ import Image from "next/image";
 // TODO: stop new signups
 
 // TODO: add walking after midnight song to landing page
-// TODO: change home page to all albums link
-// TODO: center align landing page
 // TODO: mobile friendly
-// TODO: great vibes serif font
+// TODO: make all albums page styled/mobile
+// TODO: make sheet component to show all profiles and be mobile menu
 
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
