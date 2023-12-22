@@ -18,8 +18,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-5 min-h-screen">
-      <div className="col-span-3 relative">
+    <div className="lg:grid lg:grid-cols-5 min-h-screen relative">
+      <div className="w-full lg:col-span-3 relative">
         <Image
           src="/midnight-landing.jpg"
           alt=""
@@ -27,7 +27,7 @@ export default function Home() {
           fill
         />
       </div>
-      <div className="col-span-2 flex flex-col justify-center mx-auto max-w-prose px-12">
+      <div className="bg-zinc-50 lg:col-span-2 flex flex-col justify-center lg:mx-auto max-w-prose mx-3 px-3 pb-3 pt-5 lg:px-12 absolute top-1/2 -translate-y-1/2">
         <h1 className="text-7xl font-serif pb-1 text-zinc-900">
           Walking After Midnight
         </h1>
