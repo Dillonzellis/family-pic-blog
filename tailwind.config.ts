@@ -17,6 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        sans: ["var(--font-mont)"],
         serif: ["var(--font-vibes)"],
       },
       colors: {
@@ -77,4 +78,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 };
-

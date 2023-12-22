@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Providers from "@/components/Providers";
-import { Inter, Great_Vibes } from "next/font/google";
+import { Montserrat, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const mont = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
 const vibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
@@ -25,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full bg-zinc-50 text-zinc-900">
       <body
-        className={`${inter.variable} ${vibes.variable} relative font-sans antialiased`}
+        className={`${mont.variable} ${vibes.variable} relative font-sans antialiased`}
       >
-        <main className="relative flex flex-col min-h-screen">
+        <main className="relative flex min-h-screen flex-col">
           <Providers>
-            <div className="flex-grow flex-1">{children}</div>
+            <div className="flex-1 flex-grow">{children}</div>
           </Providers>
         </main>
 
