@@ -4,8 +4,6 @@ import Image from "next/image";
 // TODO: customize admin panel
 // TODO: stop new signups
 
-// TODO: add handwriting fonts(sacremento)
-// TODO: add beach picture
 // TODO: add walking after midnight song to landing page
 // TODO: change home page to all albums link
 // TODO: center align landing page
