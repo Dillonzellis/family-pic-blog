@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { buttonVariants } from "./ui/button";
+import { Menu } from "lucide-react";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -12,33 +13,35 @@ const Navbar = async () => {
   return (
     <nav>
       <MaxWidthWrapper>
-        <div className="flex gap-6 py-4 border-b">
-          <div>
-            <Link
-              href={`/profile/${user?.id}`}
-              className={buttonVariants({ variant: "link" })}
-            >
-              {user.name}
+        <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
+          <div className="flex items-center">
+            <Link className="pr-20 font-serif text-2xl" href="/">
+              Walking After Midnight
             </Link>
+            <div>
+              <Link
+                href={`/profile/${user?.id}`}
+                className={buttonVariants({ variant: "link" })}
+              >
+                {user?.name}
+              </Link>
+              <Link
+                href="/home"
+                className={buttonVariants({
+                  variant: "link",
+                })}
+              >
+                All Albums
+              </Link>
+              <Link
+                href="/dashboard/collections/albums?limit=10"
+                className={buttonVariants({ variant: "link" })}
+              >
+                Upload Albums
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link
-              href="/home"
-              className={buttonVariants({
-                variant: "link",
-              })}
-            >
-              All Albums
-            </Link>
-          </div>
-          <div>
-            <Link
-              href="/dashboard/collections/albums?limit=10"
-              className={buttonVariants({ variant: "link" })}
-            >
-              Upload Albums
-            </Link>
-          </div>
+          <Menu className="h-7 w-7" />
         </div>
       </MaxWidthWrapper>
     </nav>
