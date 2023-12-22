@@ -29,8 +29,6 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
     },
   });
 
-  // If no albums, you can return a message or handle it as needed
-  // TODO: add guard clause for no albums
   if (albums.length === 0) {
     return (
       <MaxWidthWrapper>

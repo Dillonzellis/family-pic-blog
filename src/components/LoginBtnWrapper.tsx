@@ -13,14 +13,20 @@ export const LoginBtnWrapper = async () => {
         <div className="space-x-8">
           <Link
             href={`/profile/${user.id}`}
-            className={buttonVariants({ className: "self-start" })}
+            className={buttonVariants({
+              variant: "outline",
+              className: "self-start",
+            })}
           >
             Profile Page
           </Link>
 
           <Link
             href="/home"
-            className={buttonVariants({ className: "self-start" })}
+            className={buttonVariants({
+              variant: "outline",
+              className: "self-start",
+            })}
           >
             Home Page
           </Link>
@@ -28,7 +34,10 @@ export const LoginBtnWrapper = async () => {
       ) : (
         <Link
           href="/sign-in"
-          className={buttonVariants({ className: "self-start" })}
+          className={buttonVariants({
+            variant: "outline",
+            className: "self-start",
+          })}
         >
           Sign In
         </Link>
