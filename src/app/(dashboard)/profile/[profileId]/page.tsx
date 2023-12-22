@@ -15,7 +15,6 @@ interface ProfilePageProps {
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const nextCookies = cookies();
   const { user } = await getServerSideUser(nextCookies);
-
   const { profileId } = params;
 
   const payload = await getPayloadClient();
@@ -37,31 +36,30 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
     );
   }
 
+  const albumUser = albums[0].user.name;
+
   return (
     <MaxWidthWrapper>
       <div className="pt-20">
-        <div className="pb-6">Profile Page</div>
-        <div className="text-xl pb-12">Welcome {user?.name}!</div>
+        <div className="pb-6">{albumUser}&apos;s Albums</div>
+        <div className="flex flex-wrap gap-8">
+          {albums.map((album, index) => (
+            <Link href={`/album/${album.id}`} key={index}>
+              <div>
+                <Image
+                  src={album.thumbnail.url}
+                  alt={`Thumbnail for ${album.title}`}
+                  height={310}
+                  width={265}
+                  className="h-[265px] w-[310px] rounded-lg object-cover"
+                />
 
-        <Link href="/dashboard" className={buttonVariants()}>
-          Upload Media
-        </Link>
-
-        {albums.map((album, index) => (
-          <Link href={`/album/${album.id}`} key={index}>
-            <div>
-              <h2 className="text-2xl">{album.title}</h2>
-              <Image
-                src={album.thumbnail.url}
-                alt={`Thumbnail for ${album.title}`}
-                height={500}
-                width={500}
-              />
-              <p>Description: {album.description}</p>
-              <p>Created At: {album.createdAt}</p>
-            </div>
-          </Link>
-        ))}
+                <p>Title: {album.title}</p>
+                <p>Description: {album.description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </MaxWidthWrapper>
   );
