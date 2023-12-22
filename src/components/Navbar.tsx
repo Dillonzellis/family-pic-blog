@@ -26,7 +26,7 @@ const Navbar = async () => {
                 {user?.name}
               </Link>
               <Link
-                href="/home"
+                href="/all-albums"
                 className={buttonVariants({
                   variant: "link",
                 })}

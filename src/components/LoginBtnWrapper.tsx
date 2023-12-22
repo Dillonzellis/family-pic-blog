@@ -22,7 +22,7 @@ export const LoginBtnWrapper = async () => {
           </Link>
 
           <Link
-            href="/home"
+            href="/all-albums"
             className={buttonVariants({
               variant: "outline",
               className: "self-start",

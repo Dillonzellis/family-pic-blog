@@ -1,7 +1,7 @@
 import AlbumReel from "@/components/AlbumReel";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
-const HomePage = () => {
+const AllAlbumsPage = () => {
   return (
     <MaxWidthWrapper>
       <div className="pt-20">
@@ -13,4 +13,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AllAlbumsPage;
