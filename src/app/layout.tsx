@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Providers from "@/components/Providers";
-import { Inter } from "next/font/google";
+import { Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
-import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const vibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-vibes",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className={cn("relative font-sans antialiased", inter.className)}>
+      <body
+        className={`${inter.variable} ${vibes.variable} relative font-sans antialiased`}
+      >
         <main className="relative flex flex-col min-h-screen">
           <Providers>
             <div className="flex-grow flex-1">{children}</div>
