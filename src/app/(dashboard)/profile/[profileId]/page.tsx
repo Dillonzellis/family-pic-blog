@@ -40,22 +40,26 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
 
   return (
     <MaxWidthWrapper>
-      <div className="pt-20">
-        <div className="pb-6">{albumUser}&apos;s Albums</div>
-        <div className="flex flex-wrap gap-8">
+      <div className="pt-16">
+        <div className="pb-16 text-3xl font-medium">
+          {albumUser}&apos;s Albums
+        </div>
+        <div className="flex flex-wrap gap-10">
           {albums.map((album, index) => (
             <Link href={`/album/${album.id}`} key={index}>
               <div>
                 <Image
                   src={album.thumbnail.url}
                   alt={`Thumbnail for ${album.title}`}
-                  height={310}
-                  width={265}
-                  className="h-[265px] w-[310px] rounded-lg object-cover"
+                  height={279}
+                  width={325}
+                  className="h-[279px] w-[325px] rounded-lg object-cover"
                 />
 
-                <p>Title: {album.title}</p>
-                <p>Description: {album.description}</p>
+                <p className="pb-0.5 pt-3 text-base">{album.title}</p>
+                <p className="text-sm text-muted-foreground">
+                  {album.description}
+                </p>
               </div>
             </Link>
           ))}
