@@ -6,8 +6,8 @@ import Image from "next/image";
 
 // TODO: add walking after midnight song to landing page
 // TODO: mobile friendly
-// TODO: make all albums page styled/mobile
 // TODO: make sheet component to show all profiles and be mobile menu
+// TODO: Make image component to display user/title/desc
 
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
