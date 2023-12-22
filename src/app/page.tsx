@@ -28,9 +28,11 @@ export default function Home() {
         />
       </div>
       <div className="col-span-2 flex flex-col justify-center mx-auto max-w-prose px-12">
-        <h1 className="text-7xl font-serif pb-1">Walking After Midnight</h1>
+        <h1 className="text-7xl font-serif pb-1 text-zinc-900">
+          Walking After Midnight
+        </h1>
         <div aria-hidden="true" className="border-t pb-4"></div>
-        <p className="text-gray-700 font-serif text-2xl pb-8">
+        <p className="text-zinc-700 font-serif text-2xl pb-8">
           &quot;Family is the heart of life&apos;s journey; it&apos;s where we
           learn to love, laugh, and embrace the beauty of being perfectly
           imperfect together.&quot;

@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full bg-zinc-50 text-zinc-900">
       <body
         className={`${inter.variable} ${vibes.variable} relative font-sans antialiased`}
       >
