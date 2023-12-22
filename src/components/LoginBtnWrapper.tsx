@@ -18,7 +18,7 @@ export const LoginBtnWrapper = async () => {
               className: "self-start",
             })}
           >
-            Profile Page
+            Profile
           </Link>
 
           <Link
@@ -28,7 +28,7 @@ export const LoginBtnWrapper = async () => {
               className: "self-start",
             })}
           >
-            Home Page
+            All Albums
           </Link>
         </div>
       ) : (

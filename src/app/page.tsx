@@ -15,6 +15,8 @@ import Image from "next/image";
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
 // NOTE: move upload hosting to s3 bucket
+// NOTE: custom component for bulk upload
+// NOTE: use TRPC and React Query more
 
 export default function Home() {
   return (
