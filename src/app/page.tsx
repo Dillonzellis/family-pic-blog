@@ -12,6 +12,7 @@ import Image from "next/image";
 // TODO: favicon
 // TODO: dumb dummy data
 // TODO: footer?
+//
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
