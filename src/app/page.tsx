@@ -13,7 +13,7 @@ import Image from "next/image";
 // TODO: make sheet component to show all profiles and be mobile menu
 // TODO: Make image component to display user/title/desc
 // TODO: make route from dashbord back to front end
-// TODO: make verify email
+// TODO: make verify email design
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
