@@ -6,11 +6,8 @@ import Image from "next/image";
 // TODO: customize admin panel
 // TODO: stop new signups
 
-// TODO: mobile friendly
 // TODO: make route from dashbord back to front end
 // TODO: make verify email design
-// TODO: add middleware to protect routes
-// TODO: make images work in production
 // TODO: link domain
 // TODO: favicon
 // TODO: dumb dummy data
