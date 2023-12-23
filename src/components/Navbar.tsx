@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
+import AudioPlayer from "./AudioPlayer";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -41,6 +42,7 @@ const Navbar = async () => {
               </Link>
             </div>
           </div>
+
           <Menu className="h-7 w-7" />
         </div>
       </MaxWidthWrapper>

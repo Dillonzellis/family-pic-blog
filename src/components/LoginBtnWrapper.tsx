@@ -10,7 +10,7 @@ export const LoginBtnWrapper = async () => {
   return (
     <>
       {user ? (
-        <div className="space-x-8">
+        <div className="space-x-4">
           <Link
             href={`/profile/${user.id}`}
             className={buttonVariants({

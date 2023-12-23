@@ -1,4 +1,8 @@
+import AudioPlayer from "@/components/AudioPlayer";
 import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
+import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
+
 import Image from "next/image";
 
 // TODO: customize admin panel
@@ -8,6 +12,8 @@ import Image from "next/image";
 // TODO: mobile friendly
 // TODO: make sheet component to show all profiles and be mobile menu
 // TODO: Make image component to display user/title/desc
+// TODO: make route from dashbord back to front end
+// TODO: make verify email
 
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
@@ -37,6 +43,9 @@ export default function Home() {
           imperfect together.&quot;
         </p>
         <LoginBtnWrapper />
+        <div className="pt-8 lg:pt-12">
+          <AudioPlayer />
+        </div>
       </div>
     </div>
   );
