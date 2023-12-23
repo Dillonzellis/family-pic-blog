@@ -14,6 +14,8 @@ import Image from "next/image";
 // TODO: Make image component to display user/title/desc
 // TODO: make route from dashbord back to front end
 // TODO: make verify email design
+// TODO: add middleware to protect routes
+// TODO: make images work in production
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
