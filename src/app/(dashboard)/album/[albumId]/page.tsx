@@ -4,6 +4,7 @@ import { UploadEntry } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { User } from "@/payload-types";
 
 interface AlbumPageProps {
   params: {
@@ -47,7 +48,17 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
     return typeof entry !== "string";
   };
 
-  const crumbUserUrl = `/profile/${album.user?.id}`;
+  const isUser = (user: string | User): user is User => {
+    return typeof user === "object" && user !== null;
+  };
+
+  // @ts-expect-error
+  let userId: string | undefined = isUser(album.user)
+    ? album.user.id ?? "defaultId"
+    : album.user;
+
+  // const crumbUserUrl = `/profile/${album.user?.id}`;
+  const crumbUserUrl = `/profile/${userId}`;
   const crumbAlbumTitle = album.title;
   const crumbAlbumTitleUrl = `/album/${albumId}`;
 
