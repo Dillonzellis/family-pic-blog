@@ -117,7 +117,7 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
         </div>
 
         {/* Album Images Section */}
-        <div className="grid w-full grid-cols-2 gap-8">
+        <div className="grid w-full gap-8 lg:grid-cols-2">
           {album.images?.map((imageObj, index) => {
             let imageUrl = isUploadEntry(imageObj.image)
               ? imageObj.image.url
