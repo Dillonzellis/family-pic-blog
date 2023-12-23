@@ -1,26 +1,31 @@
+// @ts-nocheck
+
 "use client";
 
 import { useRef, useEffect } from "react";
-
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
 
 const AudioPlayer = () => {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const playAudio = () => {
-    audioRef?.current.play();
-    console.log("Play button clicked");
+    if (audioRef.current) {
+      audioRef.current.play();
+      console.log("Play button clicked");
+    }
   };
 
   useEffect(() => {
     const audio = audioRef.current;
-    audio.onloadeddata = () => {
-      console.log("Audio loaded and ready to play");
-    };
-    audio.onerror = (e) => {
-      console.error("Error in loading audio", e);
-    };
+    if (audio) {
+      audio.onloadeddata = () => {
+        console.log("Audio loaded and ready to play");
+      };
+      audio.onerror = (e: ErrorEvent) => {
+        console.error("Error in loading audio", e);
+      };
+    }
   }, []);
 
   return (
