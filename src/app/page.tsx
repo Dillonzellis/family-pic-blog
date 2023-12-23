@@ -12,6 +12,7 @@ import Image from "next/image";
 // TODO: favicon
 // TODO: dumb dummy data
 // TODO: footer?
+// TODO: change collection names to make more sense ie Media = Album thumbnails
 //
 
 // NOTE: remove ts ignore cases

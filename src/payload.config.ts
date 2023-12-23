@@ -8,6 +8,8 @@ import dotenv from "dotenv";
 import { Media } from "./collections/Media";
 import { UploadEntries } from "./collections/UploadEntries";
 import { Albums } from "./collections/Albums";
+import { Logo } from "./components/Logo";
+import { Icon } from "./components/Icon";
 
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
@@ -26,6 +28,12 @@ export default buildConfig({
       titleSuffix: "- Walking After Midnight",
       favicon: "/favicon.ico",
       ogImage: "/thumbnail.jpg",
+    },
+    components: {
+      graphics: {
+        Logo,
+        Icon,
+      },
     },
   },
   rateLimit: {
