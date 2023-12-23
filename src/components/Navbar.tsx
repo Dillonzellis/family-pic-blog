@@ -6,6 +6,7 @@ import { getServerSideUser } from "@/lib/payload-utils";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import AudioPlayer from "./AudioPlayer";
+import { SheetMenu } from "./SheetMenu";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -19,7 +20,7 @@ const Navbar = async () => {
             <Link className="pr-20 font-serif text-2xl" href="/">
               Walking After Midnight
             </Link>
-            <div>
+            <div className="hidden lg:block">
               <Link
                 href={`/profile/${user?.id}`}
                 className={buttonVariants({ variant: "link" })}
@@ -42,7 +43,7 @@ const Navbar = async () => {
               </Link>
             </div>
           </div>
-          <Menu className="h-7 w-7" />
+          <SheetMenu user={user} />
         </div>
       </MaxWidthWrapper>
     </nav>
