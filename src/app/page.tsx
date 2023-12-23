@@ -16,6 +16,7 @@ import Image from "next/image";
 // TODO: make verify email design
 // TODO: add middleware to protect routes
 // TODO: make images work in production
+// TODO: link domain
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
