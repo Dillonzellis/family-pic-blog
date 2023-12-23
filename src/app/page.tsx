@@ -7,7 +7,6 @@ import Image from "next/image";
 // TODO: stop new signups
 
 // TODO: mobile friendly
-// TODO: make sheet component to show all profiles and be mobile menu
 // TODO: make route from dashbord back to front end
 // TODO: make verify email design
 // TODO: add middleware to protect routes

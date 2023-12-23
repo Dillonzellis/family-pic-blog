@@ -26,14 +26,14 @@ const AllAlbumsPage = async () => {
         <div className="pb-16 text-5xl font-semibold">All Albums</div>
         <div className="flex flex-wrap gap-10">
           {albums.map((album, index) => (
-            <div key={index}>
+            <div key={index} className="mx-auto">
               <Link href={`/album/${album.id}`}>
                 <Image
                   src={album.thumbnail.url}
                   alt={`Thumbnail for ${album.title}`}
                   height={279}
                   width={325}
-                  className="h-[279px] w-[325px] rounded-lg object-cover"
+                  className="mx-auto h-[279px] w-[325px] rounded-lg object-cover"
                 />
               </Link>
               <Link
