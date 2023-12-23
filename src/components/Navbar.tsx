@@ -42,7 +42,6 @@ const Navbar = async () => {
               </Link>
             </div>
           </div>
-
           <Menu className="h-7 w-7" />
         </div>
       </MaxWidthWrapper>

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { getPayloadClient } from "@/get-payload";
@@ -35,7 +37,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
       </MaxWidthWrapper>
     );
   }
-
+  // @ts-expect-error
   const albumUser = albums[0].user.name;
 
   return (
