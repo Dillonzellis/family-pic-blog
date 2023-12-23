@@ -1,22 +1,21 @@
 import AudioPlayer from "@/components/AudioPlayer";
 import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
-import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
 
 import Image from "next/image";
 
 // TODO: customize admin panel
 // TODO: stop new signups
 
-// TODO: add walking after midnight song to landing page
 // TODO: mobile friendly
 // TODO: make sheet component to show all profiles and be mobile menu
-// TODO: Make image component to display user/title/desc
 // TODO: make route from dashbord back to front end
 // TODO: make verify email design
 // TODO: add middleware to protect routes
 // TODO: make images work in production
 // TODO: link domain
+// TODO: favicon
+// TODO: dumb dummy data
+// TODO: footer?
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
