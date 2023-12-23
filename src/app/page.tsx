@@ -15,6 +15,7 @@ import Image from "next/image";
 // TODO: make route from dashbord back to front end
 // TODO: make verify email
 
+// NOTE: remove ts ignore cases
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
 // NOTE: move upload hosting to s3 bucket
