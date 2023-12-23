@@ -10,6 +10,7 @@ import { UploadEntries } from "./collections/UploadEntries";
 import { Albums } from "./collections/Albums";
 import { Logo } from "./components/Logo";
 import { Icon } from "./components/Icon";
+import { BackToRootButton } from "./components/BackToRootBtn";
 
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
@@ -34,6 +35,7 @@ export default buildConfig({
         Logo,
         Icon,
       },
+      afterNavLinks: [BackToRootButton],
     },
   },
   rateLimit: {

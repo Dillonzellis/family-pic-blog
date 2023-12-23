@@ -8,12 +8,11 @@ import Image from "next/image";
 
 // TODO: make route from dashbord back to front end
 // TODO: make verify email design
-// TODO: link domain
 // TODO: favicon
 // TODO: dumb dummy data
 // TODO: footer?
 // TODO: change collection names to make more sense ie Media = Album thumbnails
-//
+// TODO: profile users list to be dynamic users instead of static
 
 // NOTE: remove ts ignore cases
 // NOTE: add video uploads
