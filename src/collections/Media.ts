@@ -38,6 +38,9 @@ export const Media: CollectionConfig = {
     delete: isAdminOrHasAccessToImages(),
     update: isAdminOrHasAccessToImages(),
   },
+  admin: {
+    hidden: ({ user }) => user.role !== "admin",
+  },
   upload: {
     staticURL: "/media",
     staticDir: "media",
