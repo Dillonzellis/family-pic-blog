@@ -3,18 +3,14 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 import Image from "next/image";
 
-// TODO: customize admin panel
-// TODO: stop new signups
-
-// TODO: make route from dashbord back to front end
-// TODO: make verify email design
-// TODO: favicon
-// TODO: dumb dummy data
-// TODO: footer?
-// TODO: change collection names to make more sense ie Media = Album thumbnails
-// TODO: profile users list to be dynamic users instead of static
+// TODO: double password validation
+// TODO: rework profile section in sheet menu
+// TODO: make song autoplay and add controls
+// TODO: make image full width on landing page
 
 // NOTE: remove ts ignore cases
+// NOTE: footer?
+// NOTE: make editor role for Users
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
 // NOTE: move upload hosting to s3 bucket
