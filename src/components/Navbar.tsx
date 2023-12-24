@@ -22,8 +22,6 @@ const Navbar = async () => {
     name: user.name || "Unamed User",
   }));
 
-  console.log(usersInfo);
-
   return (
     <nav>
       <MaxWidthWrapper>

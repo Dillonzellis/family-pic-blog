@@ -119,42 +119,25 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
         {/* Album Images Section */}
         <div className="grid w-full gap-8 lg:grid-cols-2">
           {album.images?.map((imageObj, index) => {
-            let imageUrl = isUploadEntry(imageObj.image)
-              ? imageObj.image.url
-              : imageObj.image;
-
-            if (typeof imageUrl !== "string") {
-              return null;
-            }
-
-            let imageTitle = isUploadEntry(imageObj.image)
-              ? imageObj.image.title
-              : imageObj.image;
-
-            if (typeof imageTitle !== "string") {
-              return null;
-            }
-
-            let imageDesc = isUploadEntry(imageObj.image)
-              ? imageObj.image.description
-              : imageObj.image;
-
-            if (typeof imageDesc !== "string") {
-              return null;
-            }
-
             return (
-              <Link href={imageUrl} key={index}>
+              <Link href={imageObj.image.url} key={index}>
                 <div className="">
                   <Image
-                    src={imageUrl}
+                    src={imageObj.image.url}
                     alt="Album Image"
                     width={500}
                     height={500}
                     className="h-auto max-h-full w-auto max-w-full rounded-md"
                   />
-                  <p className="pt-2 text-base">{imageTitle}</p>
-                  <p className="text-sm text-muted-foreground">{imageDesc}</p>
+
+                  {imageObj.image.title && (
+                    <p className="pt-2 text-base">{imageObj.image.title}</p>
+                  )}
+                  {imageObj.image.description && (
+                    <p className="text-sm text-muted-foreground">
+                      {imageObj.image.description}
+                    </p>
+                  )}
                 </div>
               </Link>
             );
