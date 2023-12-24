@@ -115,6 +115,7 @@ export const Albums: CollectionConfig = {
         {
           name: "image",
           type: "upload",
+          label: "Upload Photos",
           relationTo: "upload_entries",
           required: true,
         },
