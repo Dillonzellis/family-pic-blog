@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -11,12 +12,19 @@ import {
 } from "./ui/sheet";
 import { Menu } from "lucide-react";
 import { User } from "@/payload-types";
+import ShowAllProfiles from "./ShowAllProfiles";
+
+interface ParsedUser {
+  id: string;
+  name: string;
+}
 
 interface SheetMenuProps {
   user: User | null;
+  userInfo: ParsedUser[];
 }
 
-export const SheetMenu = ({ user }: SheetMenuProps) => {
+export const SheetMenu = ({ user, userInfo }: SheetMenuProps) => {
   return (
     <Sheet>
       <SheetTrigger className="group flex items-center">
@@ -25,28 +33,31 @@ export const SheetMenu = ({ user }: SheetMenuProps) => {
         </span>
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col">
-        <SheetHeader className="">
-          <SheetTitle className="pb-8 font-serif">
-            Walking After Midnight
-          </SheetTitle>
+        <SheetHeader>
+          <div className="pb-8 font-serif">Walking After Midnight</div>
         </SheetHeader>
 
         <div className="flex flex-col items-start lg:hidden">
-          <Link
-            href={`/profile/${user?.id}`}
-            className={buttonVariants({ variant: "link", className: "pl-0" })}
-          >
-            {user?.name}
-          </Link>
-          <Link
-            href="/all-albums"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            All Albums
-          </Link>
+          <SheetClose asChild>
+            <Link
+              href={`/profile/${user?.id}`}
+              className={buttonVariants({ variant: "link", className: "pl-0" })}
+            >
+              {user?.name}
+            </Link>
+          </SheetClose>
+
+          <SheetClose asChild>
+            <Link
+              href="/all-albums"
+              className={buttonVariants({
+                variant: "link",
+                className: "pl-0",
+              })}
+            >
+              All Albums
+            </Link>
+          </SheetClose>
           <Link
             href="/dashboard/collections/albums?limit=10"
             className={buttonVariants({
@@ -58,127 +69,22 @@ export const SheetMenu = ({ user }: SheetMenuProps) => {
           </Link>
         </div>
 
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start pt-8">
           <SheetTitle className="">Profiles</SheetTitle>
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Brittany
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Dillon
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Lindsey
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Luke
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Nana & Papaw
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Nishala
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Resia
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Ronnie
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Sam
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Tucker
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Victoria
-          </Link>
-
-          <Link
-            href="/profile/"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Zoey
-          </Link>
+          {userInfo &&
+            userInfo.map((userItem) => (
+              <SheetClose asChild key={userItem.id}>
+                <Link
+                  href={`/profile/${userItem.id}`}
+                  className={buttonVariants({
+                    variant: "link",
+                    className: "pl-0",
+                  })}
+                >
+                  {userItem.name}
+                </Link>
+              </SheetClose>
+            ))}
         </div>
       </SheetContent>
     </Sheet>

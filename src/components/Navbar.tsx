@@ -1,16 +1,28 @@
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import { getPayloadClient } from "@/get-payload";
 
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { buttonVariants } from "./ui/button";
-import { Menu } from "lucide-react";
-import AudioPlayer from "./AudioPlayer";
 import { SheetMenu } from "./SheetMenu";
 
 const Navbar = async () => {
   const nextCookies = cookies();
   const { user } = await getServerSideUser(nextCookies);
+
+  const payload = await getPayloadClient();
+
+  const { docs: users } = await payload.find({
+    collection: "users",
+  });
+
+  const usersInfo = users.map((user) => ({
+    id: user.id,
+    name: user.name || "Unamed User",
+  }));
+
+  console.log(usersInfo);
 
   return (
     <nav>
@@ -43,7 +55,7 @@ const Navbar = async () => {
               </Link>
             </div>
           </div>
-          <SheetMenu user={user} />
+          <SheetMenu user={user} userInfo={usersInfo} />
         </div>
       </MaxWidthWrapper>
     </nav>
