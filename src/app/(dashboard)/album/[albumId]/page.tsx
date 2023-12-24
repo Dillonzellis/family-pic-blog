@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
 import { UploadEntry } from "@/payload-types";
