@@ -7,8 +7,10 @@ import Image from "next/image";
 // TODO: rework profile section in sheet menu
 // TODO: make song autoplay and add controls
 // TODO: make image full width on landing page
+// TODO: move images to s3 bucket
 
 // NOTE: remove ts ignore cases
+// NOTE: make individual photo page and way to go back ie breadcrumbs
 // NOTE: footer?
 // NOTE: make editor role for Users
 // NOTE: add video uploads
@@ -34,9 +36,7 @@ export default function Home() {
         </h1>
         <div aria-hidden="true" className="border-t pb-4"></div>
         <p className="pb-8 font-serif text-2xl text-zinc-700">
-          &quot;Family is the heart of life&apos;s journey; it&apos;s where we
-          learn to love, laugh, and embrace the beauty of being perfectly
-          imperfect together.&quot;
+          &quot;Our Life&quot;
         </p>
         <LoginBtnWrapper />
         <div className="pt-8 lg:pt-12">
