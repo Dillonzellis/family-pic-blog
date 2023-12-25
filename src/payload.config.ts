@@ -11,9 +11,23 @@ import { Albums } from "./collections/Albums";
 import { Logo } from "./components/Logo";
 import { Icon } from "./components/Icon";
 import { BackToRootButton } from "./components/BackToRootBtn";
+import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
+import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
 
 dotenv.config({
   path: path.resolve(__dirname, "../.env"),
+});
+
+const storageAdapter = s3Adapter({
+  config: {
+    endpoint: process.env.S3_ENDPOINT,
+    region: process.env.S3_REGION,
+    credentials: {
+      accessKeyId: process.env.S3_ACCESS_KEY!,
+      secretAccessKey: process.env.S3_SECRET_KEY!,
+    },
+  },
+  bucket: process.env.S3_BUCKET_NAME!,
 });
 
 export default buildConfig({
@@ -38,6 +52,18 @@ export default buildConfig({
       afterNavLinks: [BackToRootButton],
     },
   },
+  plugins: [
+    cloudStorage({
+      collections: {
+        media: {
+          adapter: storageAdapter,
+        },
+        upload_entries: {
+          adapter: storageAdapter,
+        },
+      },
+    }),
+  ],
   rateLimit: {
     max: 2000,
   },

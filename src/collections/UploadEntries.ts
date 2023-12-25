@@ -46,6 +46,7 @@ export const UploadEntries: CollectionConfig = {
   admin: {
     hidden: ({ user }) => user.role !== "admin",
   },
+
   fields: [
     {
       name: "user",
@@ -69,8 +70,6 @@ export const UploadEntries: CollectionConfig = {
     },
   ],
   upload: {
-    staticURL: "/media",
-    staticDir: "media",
-    mimeTypes: ["image/*"],
+    disableLocalStorage: true,
   },
 };

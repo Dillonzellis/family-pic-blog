@@ -4,7 +4,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 import Image from "next/image";
 
 // TODO: double password validation
-// TODO: rework profile section in sheet menu
 // TODO: make song autoplay and add controls
 // TODO: make image full width on landing page
 // TODO: move images to s3 bucket

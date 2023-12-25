@@ -65,14 +65,9 @@ export interface UploadEntry {
   user?: (string | null) | User;
   title?: string | null;
   description?: string | null;
+  upload: string | Media;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
 }
 export interface PayloadPreference {
   id: string;
