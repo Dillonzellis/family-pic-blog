@@ -15,10 +15,16 @@ const AllAlbumsPage = async () => {
   if (albums.length === 0) {
     return (
       <MaxWidthWrapper>
-        <div>No albums found</div>
+        <div className="pt-20">No albums found</div>
       </MaxWidthWrapper>
     );
   }
+
+  // console.log(albums);
+
+  const [album] = albums;
+
+  console.log("sinlge album", album.images[0]);
 
   return (
     <MaxWidthWrapper>
@@ -29,7 +35,7 @@ const AllAlbumsPage = async () => {
             <div key={index} className="mx-auto">
               <Link href={`/album/${album.id}`}>
                 <Image
-                  src={album.thumbnail.url}
+                  src={album.images[0].url}
                   alt={`Thumbnail for ${album.title}`}
                   height={279}
                   width={325}

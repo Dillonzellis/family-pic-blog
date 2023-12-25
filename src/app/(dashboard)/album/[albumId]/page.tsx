@@ -35,13 +35,13 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
 
   if (!album) return notFound();
 
-  let thumbnailUrl: string | undefined;
-
-  if (typeof album.thumbnail !== "string") {
-    if (album.thumbnail.url) {
-      thumbnailUrl = album.thumbnail.url;
-    }
-  }
+  // let thumbnailUrl: string | undefined;
+  //
+  // if (typeof album.thumbnail !== "string") {
+  //   if (album.thumbnail.url) {
+  //     thumbnailUrl = album.thumbnail.url;
+  //   }
+  // }
 
   const userName =
     typeof album.user === "object" && album.user ? album.user.name : "Unknown";
@@ -100,15 +100,15 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
 
         <div className="flex flex-col items-center justify-center pb-16 pt-20">
           <div>
-            {thumbnailUrl && (
-              <Image
-                src={thumbnailUrl}
-                alt="album thumbnail"
-                height={370}
-                width={370}
-                className="w-full rounded-md object-cover lg:h-[370px] lg:w-[370px]"
-              />
-            )}
+            {/* {thumbnailUrl && ( */}
+            {/*   <Image */}
+            {/*     src={thumbnailUrl} */}
+            {/*     alt="album thumbnail" */}
+            {/*     height={370} */}
+            {/*     width={370} */}
+            {/*     className="w-full rounded-md object-cover lg:h-[370px] lg:w-[370px]" */}
+            {/*   /> */}
+            {/* )} */}
             <div className="pt-2">
               <div className="">{album.title}</div>
               <div className="text-sm text-muted-foreground">
@@ -121,6 +121,7 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
         {/* Album Images Section */}
         <div className="grid w-full gap-8 lg:grid-cols-2">
           {album.images?.map((imageObj, index) => {
+            console.log(imageObj.image.url);
             return (
               <Link href={imageObj.image.url} key={index}>
                 <div className="">
