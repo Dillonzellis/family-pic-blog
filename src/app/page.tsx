@@ -6,17 +6,17 @@ import Image from "next/image";
 // TODO: double password validation
 // TODO: make song autoplay and add controls
 // TODO: make image full width on landing page
-// TODO: move images to s3 bucket
+// TODO: add pw reset link
+
+// TODO: remove album thumbnail
+// TODO: make individual photo page and way to go back ie breadcrumbs
 
 // NOTE: remove ts ignore cases
-// NOTE: make individual photo page and way to go back ie breadcrumbs
-// NOTE: footer?
 // NOTE: make editor role for Users
 // NOTE: add video uploads
 // NOTE: add random upload entry button(maybe home page)
-// NOTE: move upload hosting to s3 bucket
-// NOTE: custom component for bulk upload
 // NOTE: use TRPC and React Query more
+// NOTE: custom component for bulk upload
 
 export default function Home() {
   return (
