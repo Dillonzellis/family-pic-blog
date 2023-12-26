@@ -3,21 +3,6 @@ import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 import Image from "next/image";
 
-// TODO: double password validation
-// TODO: make song autoplay and add controls
-// TODO: make image full width on landing page
-// TODO: add pw reset link
-// TODO: styling consistency reusable components
-
-// TODO: make individual photo page and way to go back ie breadcrumbs
-
-// NOTE: remove ts ignore cases
-// NOTE: make editor role for Users
-// NOTE: add video uploads
-// NOTE: add random upload entry button(maybe home page)
-// NOTE: use TRPC and React Query more
-// NOTE: custom component for bulk upload
-
 export default function Home() {
   return (
     <div className="relative min-h-screen lg:grid lg:grid-cols-5">
