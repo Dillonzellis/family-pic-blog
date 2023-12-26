@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "./MaxWidthWrapper";
+import AudioPlayer from "./AudioPlayer";
 import { getPayloadClient } from "@/get-payload";
 
 import Link from "next/link";
@@ -27,9 +28,13 @@ const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
           <div className="flex items-center">
-            <Link className="pr-20 font-serif text-2xl" href="/">
+            <Link className="pr-12 font-serif text-2xl" href="/">
               Walking After Midnight
             </Link>
+
+            <div className="pr-12">
+              <AudioPlayer />
+            </div>
             <div className="hidden lg:block">
               <Link
                 href={`/profile/${user?.id}`}
