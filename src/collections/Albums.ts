@@ -95,6 +95,12 @@ export const Albums: CollectionConfig = {
       label: "Description",
     },
     {
+      name: "thumbnail",
+      label: "Album Thumbnail",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
       name: "images",
       type: "array",
       label: "Album Images",
