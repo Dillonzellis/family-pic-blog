@@ -71,5 +71,6 @@ export const UploadEntries: CollectionConfig = {
   ],
   upload: {
     disableLocalStorage: true,
+    mimeTypes: ["image/*"],
   },
 };
