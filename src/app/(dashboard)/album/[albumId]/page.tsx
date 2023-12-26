@@ -22,6 +22,7 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
   const { docs: albums } = await payload.find({
     collection: "albums",
     limit: 1,
+    depth: 1,
     where: {
       id: {
         equals: albumId,
@@ -29,26 +30,12 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
     },
   });
 
-  // console.log(albums);
-
   const [album] = albums;
 
   if (!album) return notFound();
 
-  // let thumbnailUrl: string | undefined;
-  //
-  // if (typeof album.thumbnail !== "string") {
-  //   if (album.thumbnail.url) {
-  //     thumbnailUrl = album.thumbnail.url;
-  //   }
-  // }
-
   const userName =
     typeof album.user === "object" && album.user ? album.user.name : "Unknown";
-
-  const isUploadEntry = (entry: string | UploadEntry): entry is UploadEntry => {
-    return typeof entry !== "string";
-  };
 
   const isUser = (user: string | User): user is User => {
     return typeof user === "object" && user !== null;
@@ -59,7 +46,6 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
     ? album.user.id ?? "defaultId"
     : album.user;
 
-  // const crumbUserUrl = `/profile/${album.user?.id}`;
   const crumbUserUrl = `/profile/${userId}`;
   const crumbAlbumTitle = album.title;
   const crumbAlbumTitleUrl = `/album/${albumId}`;
@@ -70,6 +56,17 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
     { id: 3, name: crumbAlbumTitle, href: crumbAlbumTitleUrl },
   ];
 
+  let thumbnailDank;
+
+  if (album.thumbnail) {
+    thumbnailDank = album.thumbnail.url;
+  } else {
+    thumbnailDank = album.images[0].image.url;
+  }
+
+  console.log(thumbnailDank);
+
+  // console.log(album.thumbnail.url);
   return (
     <MaxWidthWrapper>
       <div>
@@ -98,22 +95,19 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
           ))}
         </ol>
 
-        <div className="flex flex-col items-center justify-center pb-16 pt-20">
+        <div className="flex flex-col justify-center py-16">
           <div>
-            {/* {thumbnailUrl && ( */}
-            {/*   <Image */}
-            {/*     src={thumbnailUrl} */}
-            {/*     alt="album thumbnail" */}
-            {/*     height={370} */}
-            {/*     width={370} */}
-            {/*     className="w-full rounded-md object-cover lg:h-[370px] lg:w-[370px]" */}
-            {/*   /> */}
-            {/* )} */}
-            <div className="pt-2">
-              <div className="">{album.title}</div>
-              <div className="text-sm text-muted-foreground">
-                {album.description}
-              </div>
+            {album.thumbnail && (
+              <Image
+                src={album.thumbnail.url}
+                alt=""
+                height={300}
+                width={300}
+              />
+            )}
+            <div className="pb-2 text-2xl font-semibold">{album.title}</div>
+            <div className="text-base text-muted-foreground">
+              {album.description}
             </div>
           </div>
         </div>
@@ -121,7 +115,6 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
         {/* Album Images Section */}
         <div className="grid w-full gap-8 lg:grid-cols-2">
           {album.images?.map((imageObj, index) => {
-            console.log(imageObj.image.url);
             return (
               <Link href={imageObj.image.url} key={index}>
                 <div className="">
