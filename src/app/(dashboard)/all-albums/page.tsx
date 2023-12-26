@@ -22,38 +22,43 @@ const AllAlbumsPage = async () => {
 
   // console.log(albums);
 
-  const [album] = albums;
+  // const [album] = albums;
 
-  console.log("sinlge album", album.images[0]);
+  // console.log("sinlge album", album.images[0]);
 
   return (
     <MaxWidthWrapper>
       <div className="pt-16">
         <div className="pb-16 text-5xl font-semibold">All Albums</div>
         <div className="flex flex-wrap gap-10">
-          {albums.map((album, index) => (
-            <div key={index} className="mx-auto">
-              <Link href={`/album/${album.id}`}>
-                <Image
-                  src={album.images[0].url}
-                  alt={`Thumbnail for ${album.title}`}
-                  height={279}
-                  width={325}
-                  className="mx-auto h-[279px] w-[325px] rounded-lg object-cover"
-                />
-              </Link>
-              <Link
-                href={`/profile/${album.user.id}`}
-                className="inline-block py-1.5 text-base font-medium"
-              >
-                {album.user.name}
-              </Link>
-              <p className="pb-0.5 text-base">{album.title}</p>
-              <p className="text-sm text-muted-foreground">
-                {album.description}
-              </p>
-            </div>
-          ))}
+          {albums.map((album, index) => {
+            const thumbnailUrl = album.thumbnail
+              ? album.thumbnail.url
+              : album.images[0].image.url;
+            return (
+              <div key={index} className="mx-auto">
+                <Link href={`/album/${album.id}`}>
+                  <Image
+                    src={thumbnailUrl}
+                    alt={`Thumbnail for ${album.title}`}
+                    height={279}
+                    width={325}
+                    className="mx-auto h-[279px] w-[325px] rounded-lg object-cover"
+                  />
+                </Link>
+                <Link
+                  href={`/profile/${album.user.id}`}
+                  className="inline-block py-1.5 text-base font-medium"
+                >
+                  {album.user.name}
+                </Link>
+                <p className="pb-0.5 text-base">{album.title}</p>
+                <p className="text-sm text-muted-foreground">
+                  {album.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </MaxWidthWrapper>
