@@ -5,6 +5,7 @@ import { Montserrat, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { useRouter } from "next/router";
+import AudioPlayerDock from "@/components/AudioPlayerDock";
 
 const mont = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
 const vibes = Great_Vibes({
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Providers>
             <div className="flex-1 flex-grow">{children}</div>
           </Providers>
+          <AudioPlayerDock />
         </main>
 
         <Toaster position="top-center" richColors />

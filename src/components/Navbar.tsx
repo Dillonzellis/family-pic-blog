@@ -37,9 +37,6 @@ const Navbar = async () => {
                   Walking After Midnight
                 </Link>
 
-                <div className="lg:block lg:pr-12">
-                  <AudioPlayer />
-                </div>
                 <div className="hidden lg:block">
                   <Link
                     href={`/profile/${user?.id}`}
