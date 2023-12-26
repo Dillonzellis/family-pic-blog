@@ -47,24 +47,30 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
           {albumUser}&apos;s Albums
         </div>
         <div className="flex flex-wrap justify-center gap-10 lg:justify-start">
-          {albums.map((album, index) => (
-            <Link href={`/album/${album.id}`} key={index}>
-              <div className="mx-auto">
-                <Image
-                  src={album.thumbnail.url}
-                  alt={`Thumbnail for ${album.title}`}
-                  height={279}
-                  width={325}
-                  className="mx-auto h-[279px] w-[325px] rounded-lg object-cover"
-                />
+          {albums.map((album, index) => {
+            const thumbnailUrl = album.thumbnail
+              ? album.thumbnail.url
+              : album.images[0].image.url;
 
-                <p className="pb-0.5 pt-3 text-base">{album.title}</p>
-                <p className="text-sm text-muted-foreground">
-                  {album.description}
-                </p>
-              </div>
-            </Link>
-          ))}
+            return (
+              <Link href={`/album/${album.id}`} key={index}>
+                <div className="mx-auto">
+                  <Image
+                    src={thumbnailUrl}
+                    alt={`Thumbnail for ${album.title}`}
+                    height={279}
+                    width={325}
+                    className="mx-auto h-[279px] w-[325px] rounded-lg object-cover"
+                  />
+
+                  <p className="pb-0.5 pt-3 text-base">{album.title}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {album.description}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </MaxWidthWrapper>
