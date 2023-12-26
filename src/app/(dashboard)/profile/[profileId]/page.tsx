@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { buttonVariants } from "@/components/ui/button";
 import { getPayloadClient } from "@/get-payload";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { cookies } from "next/headers";
