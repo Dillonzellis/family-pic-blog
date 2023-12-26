@@ -28,11 +28,14 @@ const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
           <div className="flex items-center">
-            <Link className="pr-12 font-serif text-2xl" href="/">
+            <Link
+              className="pr-6 font-serif text-xl lg:pr-12 lg:text-2xl"
+              href="/"
+            >
               Walking After Midnight
             </Link>
 
-            <div className="pr-12">
+            <div className="lg:block lg:pr-12">
               <AudioPlayer />
             </div>
             <div className="hidden lg:block">

@@ -7,8 +7,8 @@ import Image from "next/image";
 // TODO: make song autoplay and add controls
 // TODO: make image full width on landing page
 // TODO: add pw reset link
+// TODO: styling consistency reusable components
 
-// TODO: remove album thumbnail
 // TODO: make individual photo page and way to go back ie breadcrumbs
 
 // NOTE: remove ts ignore cases
@@ -38,9 +38,6 @@ export default function Home() {
           &quot;Our Life&quot;
         </p>
         <LoginBtnWrapper />
-        <div className="pt-8 lg:pt-12">
-          <AudioPlayer />
-        </div>
       </div>
     </div>
   );
