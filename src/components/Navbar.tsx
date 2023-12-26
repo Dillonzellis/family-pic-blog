@@ -24,47 +24,51 @@ const Navbar = async () => {
   }));
 
   return (
-    <nav>
-      <MaxWidthWrapper>
-        <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
-          <div className="flex items-center">
-            <Link
-              className="pr-6 font-serif text-xl lg:pr-12 lg:text-2xl"
-              href="/"
-            >
-              Walking After Midnight
-            </Link>
+    <>
+      {user && (
+        <nav>
+          <MaxWidthWrapper>
+            <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
+              <div className="flex items-center">
+                <Link
+                  className="pr-6 font-serif text-xl lg:pr-12 lg:text-2xl"
+                  href="/"
+                >
+                  Walking After Midnight
+                </Link>
 
-            <div className="lg:block lg:pr-12">
-              <AudioPlayer />
+                <div className="lg:block lg:pr-12">
+                  <AudioPlayer />
+                </div>
+                <div className="hidden lg:block">
+                  <Link
+                    href={`/profile/${user?.id}`}
+                    className={buttonVariants({ variant: "link" })}
+                  >
+                    {user?.name}
+                  </Link>
+                  <Link
+                    href="/all-albums"
+                    className={buttonVariants({
+                      variant: "link",
+                    })}
+                  >
+                    All Albums
+                  </Link>
+                  <Link
+                    href="/dashboard/collections/albums?limit=10"
+                    className={buttonVariants({ variant: "link" })}
+                  >
+                    Upload Albums
+                  </Link>
+                </div>
+              </div>
+              <SheetMenu user={user} userInfo={usersInfo} />
             </div>
-            <div className="hidden lg:block">
-              <Link
-                href={`/profile/${user?.id}`}
-                className={buttonVariants({ variant: "link" })}
-              >
-                {user?.name}
-              </Link>
-              <Link
-                href="/all-albums"
-                className={buttonVariants({
-                  variant: "link",
-                })}
-              >
-                All Albums
-              </Link>
-              <Link
-                href="/dashboard/collections/albums?limit=10"
-                className={buttonVariants({ variant: "link" })}
-              >
-                Upload Albums
-              </Link>
-            </div>
-          </div>
-          <SheetMenu user={user} userInfo={usersInfo} />
-        </div>
-      </MaxWidthWrapper>
-    </nav>
+          </MaxWidthWrapper>
+        </nav>
+      )}
+    </>
   );
 };
 
