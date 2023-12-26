@@ -13,6 +13,7 @@ import {
 import { Menu } from "lucide-react";
 import { User } from "@/payload-types";
 import ShowAllProfiles from "./ShowAllProfiles";
+import AudioPlayer from "./AudioPlayer";
 
 interface ParsedUser {
   id: string;
@@ -34,7 +35,7 @@ export const SheetMenu = ({ user, userInfo }: SheetMenuProps) => {
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col">
         <SheetHeader>
-          <div className="pb-8 font-serif">Walking After Midnight</div>
+          <div className="pb-8 font-serif text-2xl">Walking After Midnight</div>
         </SheetHeader>
 
         <div className="flex flex-col items-start lg:hidden">
