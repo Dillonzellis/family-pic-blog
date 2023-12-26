@@ -3,6 +3,7 @@ import { publicProcedure, router } from "./trpc";
 import { z } from "zod";
 import { getPayloadClient } from "../get-payload";
 import { QueryValidator } from "../lib/query-validator";
+import { uploadThumbnailRouter } from "./upload-thumbnail-router";
 
 export const appRouter = router({
   auth: authRouter,
@@ -13,7 +14,7 @@ export const appRouter = router({
         limit: z.number().min(1).max(100),
         cursor: z.number().nullish(),
         query: QueryValidator,
-      })
+      }),
     )
     .query(async ({ input }) => {
       const { query, cursor } = input;
