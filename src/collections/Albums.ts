@@ -54,6 +54,7 @@ export const Albums: CollectionConfig = {
   admin: {
     useAsTitle: "title",
     defaultColumns: ["title", "description", "user"],
+    hidden: ({ user }) => user.role !== "admin" && user.role !== "editor",
   },
   access: {
     read: async ({ req }) => {

@@ -20,7 +20,7 @@ export interface Config {
 export interface User {
   id: string;
   albums?: (string | Album)[] | null;
-  role: 'admin' | 'user';
+  role: 'admin' | 'editor' | 'user';
   name?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -40,7 +40,7 @@ export interface Album {
   user?: (string | null) | User;
   title: string;
   description?: string | null;
-  thumbnail: string | Media;
+  thumbnail?: string | Media | null;
   images: {
     image: string | UploadEntry;
     id?: string | null;
@@ -65,9 +65,14 @@ export interface UploadEntry {
   user?: (string | null) | User;
   title?: string | null;
   description?: string | null;
-  upload: string | Media;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
 }
 export interface PayloadPreference {
   id: string;
