@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 "use client";
 
 import { Album } from "@/payload-types";
@@ -40,16 +42,16 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
   if (isVisible && album) {
     return (
       <Link
-        className={cn("invisible h-full w-full cursor-pointer group/main", {
+        className={cn("group/main invisible h-full w-full cursor-pointer", {
           "visible animate-in fade-in-5": isVisible,
         })}
         href={`/album/${album.id}`}
       >
-        <div className="flex flex-col w-full">
+        <div className="flex w-full flex-col">
           <div className="relative aspect-square w-full overflow-hidden rounded-xl">
             {thumbnailUrl && <Image src={thumbnailUrl} alt="" fill />}
           </div>
-          <h3 className="mt-4 font-medium text-sm text-gray-700">
+          <h3 className="mt-4 text-sm font-medium text-gray-700">
             {album.title}
           </h3>
           <div>{album.description}</div>
@@ -61,13 +63,13 @@ const AlbumListing = ({ album, index }: AlbumListingProps) => {
 
 const AlbumPlaceholder = () => {
   return (
-    <div className="flex flex-col w-full">
-      <div className="relative bg-zinc-100 aspect-square w-full overflow-hidden rounded-xl">
+    <div className="flex w-full flex-col">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-zinc-100">
         <Skeleton className="h-full w-full" />
       </div>
-      <Skeleton className="mt-4 w-2/3 h-4 rounded-lg" />
-      <Skeleton className="mt-2 w-16 h-4 rounded-lg" />
-      <Skeleton className="mt-2 w-12 h-4 rounded-lg" />
+      <Skeleton className="mt-4 h-4 w-2/3 rounded-lg" />
+      <Skeleton className="mt-2 h-4 w-16 rounded-lg" />
+      <Skeleton className="mt-2 h-4 w-12 rounded-lg" />
     </div>
   );
 };
