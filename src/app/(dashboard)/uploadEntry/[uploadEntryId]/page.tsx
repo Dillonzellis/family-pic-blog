@@ -34,22 +34,21 @@ const UploadEntryPage = async ({ params }: UploadEntryPageProps) => {
         userNameUrl={`/profile/${uploadEntry.user.id}`}
         uploadTitle={uploadEntry.title}
       />
-      <div className="pb-4 pt-8">
+      <div className="py-6 lg:py-12">
         <Image
           src={uploadEntry.url}
           width={uploadEntry.width}
           height={uploadEntry.height}
           alt=""
+          className="pb-4"
         />
+        {uploadEntry.title && (
+          <div className="text-3xl font-medium">{uploadEntry.title}</div>
+        )}
+        {uploadEntry.description && (
+          <div className="text-muted-foreground">{uploadEntry.description}</div>
+        )}
       </div>
-      {uploadEntry.title && (
-        <div className="text-2xl font-medium">{uploadEntry.title}</div>
-      )}
-      {uploadEntry.description && (
-        <div className="pb-4 text-muted-foreground">
-          {uploadEntry.description}
-        </div>
-      )}
     </MaxWidthWrapper>
   );
 };
