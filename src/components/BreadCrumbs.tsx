@@ -32,7 +32,7 @@ const BreadCrumbs = ({
   }
 
   return (
-    <ol className="flex items-center space-x-1 pt-8">
+    <ol className="flex items-center space-x-1 pt-6">
       {breadcrumbs.map((breadcrumb, i) => (
         <li key={breadcrumb.href}>
           <div className="flex items-center text-sm">
