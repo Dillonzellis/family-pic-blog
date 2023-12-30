@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
+import AlbumPreview from "@/components/AlbumPreview";
 
 const AllAlbumsPage = async () => {
   const payload = await getPayloadClient();
@@ -30,27 +31,15 @@ const AllAlbumsPage = async () => {
               ? album.thumbnail.url
               : album.images[0].image.url;
             return (
-              <div key={index} className="mx-auto lg:mx-0">
-                <Link href={`/album/${album.id}`}>
-                  <Image
-                    src={thumbnailUrl}
-                    alt={`Thumbnail for ${album.title}`}
-                    height={279}
-                    width={325}
-                    className="mx-auto h-[279px] w-[325px] rounded-lg object-cover lg:mx-0"
-                  />
-                </Link>
-                <Link
-                  href={`/profile/${album.user.id}`}
-                  className="inline-block pt-1 font-serif text-2xl"
-                >
-                  {album.user.name}
-                </Link>
-                <p className="text-base">{album.title}</p>
-                <p className="text-sm text-muted-foreground">
-                  {album.description}
-                </p>
-              </div>
+              <AlbumPreview
+                key={index}
+                userName={album.user.name}
+                userId={album.user.id}
+                albumUrl={thumbnailUrl}
+                albumId={album.id}
+                albumDesc={album.description}
+                albumTitle={album.title}
+              />
             );
           })}
         </div>
