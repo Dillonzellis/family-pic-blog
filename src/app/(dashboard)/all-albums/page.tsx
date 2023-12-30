@@ -1,7 +1,5 @@
 // @ts-nocheck
 
-import Link from "next/link";
-import Image from "next/image";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
 import AlbumPreview from "@/components/AlbumPreview";
