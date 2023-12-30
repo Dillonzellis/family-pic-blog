@@ -3,7 +3,6 @@
 import BreadCrumbs from "@/components/BreadCrumbs";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
-import { uploadThumbnailRouter } from "@/trpc/upload-thumbnail-router";
 import Image from "next/image";
 
 interface UploadEntryPageProps {
@@ -26,21 +25,7 @@ const UploadEntryPage = async ({ params }: UploadEntryPageProps) => {
     },
   });
 
-  // use uploadThumbnailRouter instead this query
-  // const { docs: albums } = await payload.find({
-  //   collection: "albums",
-  //   where: {
-  //     images: {
-  //       id: {
-  //         equals: uploadEntryId,
-  //       },
-  //     },
-  //   },
-  // });
-
   const [uploadEntry] = uploadEntrys;
-
-  // console.log(uploadEntry);
 
   return (
     <MaxWidthWrapper>
