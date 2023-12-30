@@ -1,12 +1,12 @@
 // @ts-nocheck
 
+import AlbumPreview from "@/components/AlbumPreview";
+import BreadCrumbs from "@/components/BreadCrumbs";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
-import { UploadEntry } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { User } from "@/payload-types";
 
 interface AlbumPageProps {
   params: {
@@ -34,78 +34,27 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
 
   if (!album) return notFound();
 
-  const userName =
-    typeof album.user === "object" && album.user ? album.user.name : "Unknown";
-
-  const isUser = (user: string | User): user is User => {
-    return typeof user === "object" && user !== null;
-  };
-
-  // @ts-expect-error
-  let userId: string | undefined = isUser(album.user)
-    ? album.user.id ?? "defaultId"
-    : album.user;
-
-  const crumbUserUrl = `/profile/${userId}`;
-  const crumbAlbumTitle = album.title;
-  const crumbAlbumTitleUrl = `/album/${albumId}`;
-
-  const BREADCRUMBS = [
-    { id: 1, name: "All Albums", href: "/all-albums" },
-    { id: 2, name: userName, href: crumbUserUrl },
-    { id: 3, name: crumbAlbumTitle, href: crumbAlbumTitleUrl },
-  ];
-
-  let thumbnailDank;
-
-  if (album.thumbnail) {
-    thumbnailDank = album.thumbnail.url;
-  } else {
-    thumbnailDank = album.images[0].image.url;
-  }
-
-  console.log(thumbnailDank);
-
-  // console.log(album.thumbnail.url);
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className="pb-12">
       <div>
-        <ol className="flex items-center space-x-1 pt-8">
-          {BREADCRUMBS.map((breadcrumb, i) => (
-            <li key={breadcrumb.href}>
-              <div className="flex items-center text-sm">
-                <Link
-                  href={breadcrumb.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-gray-900"
-                >
-                  {breadcrumb.name}
-                </Link>
-                {i !== BREADCRUMBS.length - 1 ? (
-                  <svg
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="ml-2 h-5 w-5 flex-shrink-0 text-zinc-300"
-                  >
-                    <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
-                  </svg>
-                ) : null}
-              </div>
-            </li>
-          ))}
-        </ol>
-
+        <BreadCrumbs
+          userName={album.user.name}
+          userNameUrl={`/profile/${album.user.id}`}
+          albumTitle={album.title}
+          albumTitleUrl={`/album/${albumId}`}
+        />
         <div className="flex flex-col justify-center py-16">
-          <div>
+          <div className="mx-auto text-center">
             {album.thumbnail && (
               <Image
                 src={album.thumbnail.url}
                 alt=""
-                height={300}
-                width={300}
+                height={279}
+                width={325}
+                className="h-[279px] w-[325px] rounded-lg object-cover"
               />
             )}
-            <div className="pb-2 text-2xl font-semibold">{album.title}</div>
+            <div className="py-2 text-3xl font-semibold">{album.title}</div>
             <div className="text-base text-muted-foreground">
               {album.description}
             </div>
