@@ -35,7 +35,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
 
   return (
     <MaxWidthWrapper>
-      <div className="pt-16">
+      <div className="py-16">
         <div className="pb-16 text-3xl font-medium">
           {albumUser}&apos;s Albums
         </div>

@@ -1,4 +1,3 @@
-import AudioPlayer from "@/components/AudioPlayer";
 import { LoginBtnWrapper } from "@/components/LoginBtnWrapper";
 
 import Image from "next/image";
