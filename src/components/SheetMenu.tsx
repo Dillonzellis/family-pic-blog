@@ -12,8 +12,6 @@ import {
 } from "./ui/sheet";
 import { Menu } from "lucide-react";
 import { User } from "@/payload-types";
-import ShowAllProfiles from "./ShowAllProfiles";
-import AudioPlayer from "./AudioPlayer";
 
 interface ParsedUser {
   id: string;
