@@ -22,7 +22,7 @@ const AllAlbumsPage = async () => {
   return (
     <MaxWidthWrapper>
       <div className="py-12">
-        <div className="pb-12 text-5xl font-semibold">All Albums</div>
+        <div className="pb-12 text-5xl font-semibold text-center lg:text-start">All Albums</div>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {albums.map((album, index) => {
             const thumbnailUrl = album.thumbnail

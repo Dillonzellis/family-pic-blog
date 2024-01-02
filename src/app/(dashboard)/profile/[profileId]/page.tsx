@@ -36,7 +36,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
   return (
     <MaxWidthWrapper>
       <div className="py-16">
-        <div className="pb-16 text-3xl font-medium">
+        <div className="pb-16 text-3xl font-medium text-center lg:text-start">
           {albumUser}&apos;s Albums
         </div>
         <div className="flex flex-wrap justify-center gap-10 lg:justify-start">
