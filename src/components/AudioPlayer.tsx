@@ -19,7 +19,6 @@ const AudioPlayer = () => {
         audio.play();
       }
       setIsPlaying(!isPlaying); // Toggle the playing state
-      console.log(isPlaying ? "Pause button clicked" : "Play button clicked");
     }
   };
 
@@ -27,10 +26,8 @@ const AudioPlayer = () => {
     const audio = audioRef.current;
     if (audio) {
       audio.onloadeddata = () => {
-        console.log("Audio loaded and ready to play");
       };
       audio.onerror = (e: ErrorEvent) => {
-        console.error("Error in loading audio", e);
       };
     }
   }, []);
