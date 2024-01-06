@@ -67,7 +67,7 @@ const Page = () => {
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Sign in to your {isSeller ? "seller" : ""} account
+              Sign in to your account
             </h1>
 
             <Link
@@ -127,12 +127,15 @@ const Page = () => {
               </div>
             </form>
 
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 flex items-center"
-              ></div>
-            </div>
+            <Link
+              className={buttonVariants({
+                variant: "link",
+                className: "gap-1.5",
+              })}
+              href="/dashboard/forgot"
+            >
+              Forgot Password?
+            </Link>
           </div>
         </div>
       </div>
