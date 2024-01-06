@@ -38,12 +38,17 @@ export const SheetMenu = ({ user, userInfo }: SheetMenuProps) => {
 
         <div className="flex flex-col items-start lg:hidden">
           <SheetClose asChild>
-            <Link
-              href={`/profile/${user?.id}`}
-              className={buttonVariants({ variant: "link", className: "pl-0" })}
-            >
-              {user?.name}
-            </Link>
+            {user ? (
+              <Link
+                href={`/profile/${user?.id}`}
+                className={buttonVariants({
+                  variant: "link",
+                  className: "pl-0",
+                })}
+              >
+                {user?.name}
+              </Link>
+            ) : null}
           </SheetClose>
 
           <SheetClose asChild>
@@ -57,15 +62,32 @@ export const SheetMenu = ({ user, userInfo }: SheetMenuProps) => {
               All Albums
             </Link>
           </SheetClose>
-          <Link
-            href="/dashboard/collections/albums?limit=10"
-            className={buttonVariants({
-              variant: "link",
-              className: "pl-0",
-            })}
-          >
-            Upload Albums
-          </Link>
+
+          {!user ? (
+            <SheetClose asChild>
+              <Link
+                href="/sign-in"
+                className={buttonVariants({
+                  variant: "link",
+                  className: "pl-0",
+                })}
+              >
+                Sign In
+              </Link>
+            </SheetClose>
+          ) : null}
+
+          {user ? (
+            <Link
+              href="/dashboard/collections/albums?limit=10"
+              className={buttonVariants({
+                variant: "link",
+                className: "pl-0",
+              })}
+            >
+              Upload Albums
+            </Link>
+          ) : null}
         </div>
 
         <div className="flex flex-col items-start pt-8">

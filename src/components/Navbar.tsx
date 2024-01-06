@@ -1,7 +1,5 @@
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import AudioPlayer from "./AudioPlayer";
 import { getPayloadClient } from "@/get-payload";
-
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { getServerSideUser } from "@/lib/payload-utils";
@@ -23,49 +21,69 @@ const Navbar = async () => {
     name: user.name || "Unamed User",
   }));
 
-  return (
-    <>
-      {user && (
-        <nav>
-          <MaxWidthWrapper>
-            <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
-              <div className="flex items-center">
-                <Link
-                  className="pr-6 font-serif text-xl lg:pr-12 lg:text-2xl"
-                  href="/"
-                >
-                  Walking After Midnight
-                </Link>
+  const UserNav = () => {
+    return (
+      <div className="hidden lg:block">
+        <Link
+          href={`/profile/${user?.id}`}
+          className={buttonVariants({ variant: "link" })}
+        >
+          {user?.name}
+        </Link>
 
-                <div className="hidden lg:block">
-                  <Link
-                    href={`/profile/${user?.id}`}
-                    className={buttonVariants({ variant: "link" })}
-                  >
-                    {user?.name}
-                  </Link>
-                  <Link
-                    href="/all-albums"
-                    className={buttonVariants({
-                      variant: "link",
-                    })}
-                  >
-                    All Albums
-                  </Link>
-                  <Link
-                    href="/dashboard/collections/albums?limit=10"
-                    className={buttonVariants({ variant: "link" })}
-                  >
-                    Upload Albums
-                  </Link>
-                </div>
-              </div>
-              <SheetMenu user={user} userInfo={usersInfo} />
-            </div>
-          </MaxWidthWrapper>
-        </nav>
-      )}
-    </>
+        <Link
+          href="/all-albums"
+          className={buttonVariants({
+            variant: "link",
+          })}
+        >
+          All Albums
+        </Link>
+        <Link
+          href="/dashboard/collections/albums?limit=10"
+          className={buttonVariants({ variant: "link" })}
+        >
+          Upload Albums
+        </Link>
+      </div>
+    );
+  };
+
+  const GuestNav = () => {
+    return (
+      <div className="hidden lg:block">
+        <Link
+          href="/all-albums"
+          className={buttonVariants({
+            variant: "link",
+          })}
+        >
+          All Albums
+        </Link>
+        <Link href="/sign-in" className={buttonVariants({ variant: "link" })}>
+          Sign In
+        </Link>
+      </div>
+    );
+  };
+
+  return (
+    <nav>
+      <MaxWidthWrapper>
+        <div className="flex items-center justify-between gap-4 border-b pb-2 pt-3 text-sm font-normal">
+          <div className="flex items-center">
+            <Link
+              className="pr-6 font-serif text-xl lg:pr-12 lg:text-2xl"
+              href="/"
+            >
+              Walking After Midnight
+            </Link>
+            {user ? <UserNav /> : <GuestNav />}
+          </div>
+          <SheetMenu user={user} userInfo={usersInfo} />
+        </div>
+      </MaxWidthWrapper>
+    </nav>
   );
 };
 
