@@ -65,7 +65,7 @@ const AlbumPage = async ({ params }: AlbumPageProps) => {
         <div className="grid w-full gap-8 lg:grid-cols-2">
           {album.images?.map((imageObj, index) => {
             return (
-              <Link href={`/uploadEntry/${imageObj.image.id}`} key={index}>
+              <Link href={`/upload-entry/${imageObj.image.id}`} key={index}>
                 <div className="">
                   <Image
                     src={imageObj.image.url}
