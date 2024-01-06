@@ -1,12 +1,15 @@
 import { z } from "zod";
-import { AuthCredentialsValidator } from "../lib/account-credentials-validator";
+import {
+  SignUpCredentialsValidator,
+  SignInCredentialsValidator,
+} from "../lib/account-credentials-validator";
 import { publicProcedure, router } from "./trpc";
 import { getPayloadClient } from "../get-payload";
 import { TRPCError } from "@trpc/server";
 
 export const authRouter = router({
   createPayloadUser: publicProcedure
-    .input(AuthCredentialsValidator)
+    .input(SignUpCredentialsValidator)
     .mutation(async ({ input }) => {
       const { email, password } = input;
       const payload = await getPayloadClient();
@@ -29,6 +32,7 @@ export const authRouter = router({
           email,
           password,
           role: "user",
+          name: input.userName,
         },
       });
 
@@ -53,7 +57,7 @@ export const authRouter = router({
     }),
 
   signIn: publicProcedure
-    .input(AuthCredentialsValidator)
+    .input(SignInCredentialsValidator)
     .mutation(async ({ input, ctx }) => {
       const { email, password } = input;
       const { res } = ctx;

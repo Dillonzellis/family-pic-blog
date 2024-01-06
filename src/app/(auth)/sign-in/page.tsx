@@ -1,6 +1,5 @@
 "use client";
 
-// import { Icons } from "@/components/Icons";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,8 +10,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import {
-  AuthCredentialsValidator,
-  TAuthCredentialsValidator,
+  TSignInCredentialsValidator,
+  SignInCredentialsValidator,
 } from "@/lib/account-credentials-validator";
 import { trpc } from "@/trpc/client";
 import { toast } from "sonner";
@@ -24,20 +23,12 @@ const Page = () => {
   const isSeller = searchParams.get("as") === "seller";
   const origin = searchParams.get("origin");
 
-  const continueAsSeller = () => {
-    router.push("?as=seller");
-  };
-
-  const continueAsBuyer = () => {
-    router.replace("/sign-in", undefined);
-  };
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TAuthCredentialsValidator>({
-    resolver: zodResolver(AuthCredentialsValidator),
+  } = useForm<TSignInCredentialsValidator>({
+    resolver: zodResolver(SignInCredentialsValidator),
   });
 
   const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
@@ -66,16 +57,15 @@ const Page = () => {
     },
   });
 
-  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
+  const onSubmit = ({ email, password }: TSignInCredentialsValidator) => {
     signIn({ email, password });
   };
 
   return (
     <>
-      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
+      <div className="container relative flex flex-col items-center justify-center pt-20 lg:px-0">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
-            {/* <Icons.logo className="h-20 w-20" /> */}
             <h1 className="text-2xl font-semibold tracking-tight">
               Sign in to your {isSeller ? "seller" : ""} account
             </h1>

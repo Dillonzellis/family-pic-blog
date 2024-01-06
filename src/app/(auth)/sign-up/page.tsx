@@ -9,21 +9,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import {
-  AuthCredentialsValidator,
-  TAuthCredentialsValidator,
-} from "@/lib/account-credentials-validator";
 import { trpc } from "@/trpc/client";
 import { ZodError } from "zod";
 import { useRouter } from "next/navigation";
+import {
+  SignUpCredentialsValidator,
+  TSignUpCredentialsValidator,
+} from "@/lib/account-credentials-validator";
 
 const Page = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TAuthCredentialsValidator>({
-    resolver: zodResolver(AuthCredentialsValidator),
+  } = useForm<TSignUpCredentialsValidator>({
+    resolver: zodResolver(SignUpCredentialsValidator),
   });
 
   const router = useRouter();
@@ -51,13 +51,18 @@ const Page = () => {
     },
   });
 
-  const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-    mutate({ email, password });
+  const onSubmit = ({
+    email,
+    password,
+    passwordConfirmation,
+    userName,
+  }: TSignUpCredentialsValidator) => {
+    mutate({ email, password, passwordConfirmation, userName });
   };
 
   return (
     <>
-      <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
+      <div className="container relative flex flex-col items-center justify-center pt-20 lg:px-0">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
@@ -108,6 +113,40 @@ const Page = () => {
                   {errors?.password && (
                     <p className="text-sm text-red-500">
                       {errors.password.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="passwordConfirmation">Confirm Password</Label>
+                  <Input
+                    {...register("passwordConfirmation")}
+                    type="password"
+                    className={cn({
+                      "focus-visible:ring-red-500": errors.passwordConfirmation,
+                    })}
+                    placeholder="Confirm Password"
+                  />
+                  {errors?.passwordConfirmation && (
+                    <p className="text-sm text-red-500">
+                      {errors.passwordConfirmation.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="grid gap-1 py-2">
+                  <Label htmlFor="userName">First Name</Label>
+                  <Input
+                    {...register("userName")}
+                    type="text"
+                    className={cn({
+                      "focus-visible:ring-red-500": errors.userName,
+                    })}
+                    placeholder="Your Name"
+                  />
+                  {errors?.userName && (
+                    <p className="text-sm text-red-500">
+                      {errors.userName.message}
                     </p>
                   )}
                 </div>
