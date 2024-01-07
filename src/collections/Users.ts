@@ -1,22 +1,16 @@
-import { CollectionConfig, Access } from "payload/types";
-
-const adminsAndUser: Access = ({ req: { user } }) => {
-  if (user.role === "admin") return true;
-
-  return {
-    id: {
-      equals: user.id,
-    },
-  };
-};
+import { NewUserEmailTemplate } from "../components/emails/NewUserEmail";
+import { CollectionConfig } from "payload/types";
 
 export const Users: CollectionConfig = {
   slug: "users",
 
   auth: {
     verify: {
-      generateEmailHTML: ({ token }) => {
-        return `<a href="${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}">Verify Email</a>`;
+      generateEmailHTML: ({ token, user }) => {
+        return NewUserEmailTemplate({
+          href: `${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}`,
+          userFirstname: user.name,
+        });
       },
     },
   },
