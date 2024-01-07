@@ -3,24 +3,23 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen lg:grid lg:grid-cols-5">
-      <div className="relative w-full lg:col-span-3">
-        <Image
-          src="/midnight-landing.jpg"
-          alt=""
-          className="min-h-screen object-cover"
-          fill
-        />
-      </div>
-      <div className="absolute top-1/2 mx-3 flex max-w-prose -translate-y-1/2 flex-col justify-center rounded-md bg-zinc-50 px-6 pb-5 pt-7 lg:static lg:col-span-2 lg:mx-auto lg:translate-y-0 lg:bg-transparent lg:px-12 lg:py-0">
-        <h1 className="pb-1 font-serif text-7xl text-zinc-900 dark:text-zinc-50">
+    <div className="relative h-screen">
+      <Image
+        src="/midnight-landing.jpg"
+        alt="sandy dunes at a beach"
+        className="h-full min-h-screen w-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      <div className="absolute top-1/2 mx-8 flex max-w-[430px] -translate-y-1/2 flex-col justify-center lg:left-1/2 lg:mx-0 lg:-translate-x-1/2 lg:rounded-2xl lg:bg-zinc-50/60 lg:px-6 lg:pb-5 lg:pt-7 lg:backdrop-blur-[1.5px]">
+        <h1 className="text-shadow pb-1 font-serif text-5xl text-zinc-900 lg:text-6xl">
           Walking After Midnight
         </h1>
         <div
           aria-hidden="true"
-          className="border-t pb-4 dark:border-zinc-700"
+          className="hidden max-w-sm border-t border-zinc-500 pb-4 lg:block"
         ></div>
-        <p className="pb-8 font-serif text-2xl text-zinc-700 dark:text-zinc-200">
+        <p className="text-shadow pb-6 font-serif text-2xl text-zinc-900">
           &quot;Our Life&quot;
         </p>
         <LoginBtnWrapper />
