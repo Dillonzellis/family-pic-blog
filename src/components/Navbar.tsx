@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { buttonVariants } from "./ui/button";
 import { SheetMenu } from "./SheetMenu";
+import { DarkModeToggle } from "./DarkModeToggle";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -80,7 +81,10 @@ const Navbar = async () => {
             </Link>
             {user ? <UserNav /> : <GuestNav />}
           </div>
-          <SheetMenu user={user} userInfo={usersInfo} />
+          <div className="flex gap-4">
+            <DarkModeToggle />
+            <SheetMenu user={user} userInfo={usersInfo} />
+          </div>
         </div>
       </MaxWidthWrapper>
     </nav>

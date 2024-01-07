@@ -13,11 +13,14 @@ export default function Home() {
         />
       </div>
       <div className="absolute top-1/2 mx-3 flex max-w-prose -translate-y-1/2 flex-col justify-center rounded-md bg-zinc-50 px-6 pb-5 pt-7 lg:static lg:col-span-2 lg:mx-auto lg:translate-y-0 lg:bg-transparent lg:px-12 lg:py-0">
-        <h1 className="pb-1 font-serif text-7xl text-zinc-900">
+        <h1 className="pb-1 font-serif text-7xl text-zinc-900 dark:text-zinc-50">
           Walking After Midnight
         </h1>
-        <div aria-hidden="true" className="border-t pb-4"></div>
-        <p className="pb-8 font-serif text-2xl text-zinc-700">
+        <div
+          aria-hidden="true"
+          className="border-t pb-4 dark:border-zinc-700"
+        ></div>
+        <p className="pb-8 font-serif text-2xl text-zinc-700 dark:text-zinc-200">
           &quot;Our Life&quot;
         </p>
         <LoginBtnWrapper />

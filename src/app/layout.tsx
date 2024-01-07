@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
@@ -25,19 +26,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full bg-zinc-50 text-zinc-900">
+    <html lang="en" className="dark h-full bg-zinc-50 text-zinc-900">
       <body
         className={`${mont.variable} ${vibes.variable} relative font-sans antialiased`}
       >
-        <Navbar />
-        <main className="relative flex min-h-screen flex-col">
-          <Providers>
-            <div className="flex-1 flex-grow">{children}</div>
-          </Providers>
-          <AudioPlayerDock />
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main className="relative flex min-h-screen flex-col">
+            <Providers>
+              <div className="flex-1 flex-grow">{children}</div>
+            </Providers>
+            <AudioPlayerDock />
+          </main>
 
-        <Toaster position="top-center" richColors />
+          <Toaster position="top-center" richColors />
+        </ThemeProvider>
       </body>
     </html>
   );
