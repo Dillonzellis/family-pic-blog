@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark h-full bg-zinc-50 text-zinc-900">
       <body
-        className={`${mont.variable} ${vibes.variable} relative font-sans antialiased`}
+        className={`${mont.variable} ${vibes.variable} relative min-h-screen font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
