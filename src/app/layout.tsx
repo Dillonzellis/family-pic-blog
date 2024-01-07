@@ -5,7 +5,6 @@ import Providers from "@/components/Providers";
 import { Montserrat, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
-import { useRouter } from "next/router";
 import AudioPlayerDock from "@/components/AudioPlayerDock";
 
 const mont = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
@@ -44,7 +43,13 @@ export default function RootLayout({
             <AudioPlayerDock />
           </main>
 
-          <Toaster position="top-center" richColors />
+          <Toaster
+            position="top-center"
+            richColors
+            toastOptions={{
+              duration: 1500,
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>
