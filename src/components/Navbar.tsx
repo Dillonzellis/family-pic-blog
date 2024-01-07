@@ -86,7 +86,7 @@ const Navbar = async () => {
             </Link>
             {user ? <UserNav /> : <GuestNav />}
           </div>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <DarkModeToggle />
             <SheetMenu user={user} userInfo={usersInfo} />
           </div>
