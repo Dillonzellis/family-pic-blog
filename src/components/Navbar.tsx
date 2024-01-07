@@ -15,6 +15,11 @@ const Navbar = async () => {
 
   const { docs: users } = await payload.find({
     collection: "users",
+    where: {
+      role: {
+        in: ["editor", "admin"],
+      },
+    },
   });
 
   const usersInfo = users.map((user) => ({
