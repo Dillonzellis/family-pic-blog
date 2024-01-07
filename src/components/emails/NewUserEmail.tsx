@@ -29,7 +29,7 @@ export const NewUserEmail = ({ userFirstname, href }: NewUserEmailProps) => {
             <Text style={text}>Hi {userFirstname},</Text>
             <Text style={text}>
               Thanks for joining Walking After Midnight! Please click the button
-              and verufy your email address.
+              and verify your email address.
             </Text>
             <Button style={button} href={href}>
               Verify Email Address
