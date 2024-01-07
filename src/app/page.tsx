@@ -11,7 +11,7 @@ export default function Home() {
         width={1920}
         height={1080}
       />
-      <div className="absolute top-1/2 mx-8 flex max-w-[430px] -translate-y-1/2 flex-col justify-center lg:left-1/2 lg:mx-0 lg:-translate-x-1/2 lg:rounded-2xl lg:bg-zinc-50/60 lg:px-6 lg:pb-5 lg:pt-7 lg:backdrop-blur-[1.5px]">
+      <div className="absolute top-1/2 mx-8 flex max-w-[430px] -translate-y-1/2 flex-col justify-center lg:left-1/2 lg:mx-0 lg:-translate-x-1/2 lg:rounded-2xl lg:bg-zinc-50/60 lg:px-6 lg:pb-5 lg:pt-7 lg:backdrop-blur-sm">
         <h1 className="text-shadow pb-1 font-serif text-5xl text-zinc-900 lg:text-6xl">
           Walking After Midnight
         </h1>
