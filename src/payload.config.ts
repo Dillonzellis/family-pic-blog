@@ -67,6 +67,7 @@ export default buildConfig({
   rateLimit: {
     max: 2000,
   },
+  // editor: slateEditor({}),
   editor: slateEditor({}),
   db: mongooseAdapter({
     url: process.env.MONGODB_URL!,
