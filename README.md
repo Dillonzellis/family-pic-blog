@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Walking After Midnight: A Family Photo Sharing App
 
-## Getting Started
+**Live Site**: [Walking After Midnight](https://www.walkingaftermidnight.com)
 
-First, run the development server:
+This platform is designed for allowing members to create accounts, upload photo albums with captions, and share their memories with one another.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Account Creation & Management**: Members can create accounts with email verification, thanks to NodeMailer.
+- **Photo Album Uploads**: Users can upload photo albums, each with multiple pictures and captions.
+- **Photo Gallery**: Members can query and view photo albums from other family members or explore all albums shared within the family.
+- **Responsive Design**: The app features a mobile-friendly design, ensuring a great experience on any device.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Built With
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Next.js**: For the frontend and backend framework, offering server-side rendering and static site generation.
+- **Payload CMS**: A powerful headless CMS for managing content seamlessly.
+- **Express.js**: To handle server-side logic and RESTful APIs.
+- **Linode S3 Buckets**: For secure and scalable image storage.
+- **MongoDB**: To store user information, albums, and photos.
+- **NodeMailer**: For sending email verifications and communications.
+- **Zod**: Utilized for form validation, ensuring data integrity during account creation and photo uploads.
+- **ShadcnUI & Tailwind CSS**: For UI components and styling, providing a modern and cohesive look.
